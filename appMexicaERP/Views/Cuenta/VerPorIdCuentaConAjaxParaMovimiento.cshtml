@@ -1,0 +1,11 @@
+﻿@{ Layout = null; }
+
+<option value="">Seleccione una Cuenta</option>
+@foreach (var item in ViewBag.listaTCuenta)
+{
+    <option value="@item.idCuenta">@item.numeroCuenta</option>
+}
+
+<!--<script>
+    $('#selectCuentas').html('');
+</script>-->

@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Registrar";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Registro marcas de vehiculos</h4>
+                </div>
+                <div class="alert alert-warning fade in">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    En este catalogo se van registrando las marcas existente de automoviles con los que cuenta la empresa, estas son utilizadas en algunos modulos dentro del sistema.
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Registrar", "Marca")" id="frmCaptura1" class="form-inline" method="post">
+                        <input type="hidden" id="txtIdMarca" name="txtIdMarca" value="" class="form-control" placeholder="" />
+                        <div class="form-group m-r-10">
+                            <input type="text" onKeyUp="this.value=this.value.toUpperCase();" id="txtdescripcion" name="txtdescripcion" class="form-control" placeholder="Marca del vehiculo" required />
+                        </div>
+                        <div class="form-group m-r-10">
+                            <select class="form-control" id="selectEstatus" name="selectEstatus">
+                                <option value="0">Inactivo</option>
+                                <option value="1">Activo</option>
+                            </select>
+                        </div>
+                        <div style="display:inline-table;">
+                            <div id="btnInsertar">
+                                <button type="submit" class="btn btn-sm btn-success fa fa-save"> Insertar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form action="@Url.Action("Modificar", "Marca")" style="display:none;" id="frmCaptura2" class="form-inline" method="post">
+                        <input type="hidden" id="txtIdMarca1" name="txtIdMarca" value="" class="form-control" placeholder="" />
+                        <div class="form-group m-r-10">
+                            <input type="text" onKeyUp="this.value=this.value.toUpperCase();" id="txtdescripcion1" name="txtdescripcion" class="form-control" placeholder="Marca del vehiculo" required />
+                        </div>
+                        <div class="form-group m-r-10">
+                            <select class="form-control" id="selectEstatus1" name="selectEstatus">
+                                <option value="0">Inactivo</option>
+                                <option value="1">Activo</option>
+                            </select>
+                        </div>
+                        <div style="display:inline-table;">
+                            <button type="button" class="btn btn-sm btn-primary fa fa-pencil" onclick="GuardaCambios();"> Modificar</button>
+
+                            <button type="button" class="btn btn-sm btn-danger fa fa-warning" onclick="btnCancelarModificar();"> Cancelar</button>
+                        </div>
+                    </form>
+                    <br /><br />
+                    <div>
+                        <table id="data-table" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Marca</th>
+                                    <th>Estatus</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.listaMarcas)
+                                {
+                                    <tr class="odd gradeX">
+
+                                        <td><a href="#" onclick="modificar('@item.idMarca')">@item.idMarca </a></td>
+                                        <td>@item.descripcion</td>
+                                        <td>@Html.Raw(item.estatus == 1 ? "Activo" : "Inactivo") </td>
+                                        <td>
+                                            <a class="btn btn-primary btn-icon btn-circle" data-click="Modificar" href="#" onclick="MarcaModificar('@item.idMarca','@item.descripcion','@item.estatus');"><i class="fa fa-pencil"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+    </div>
+</div>
+
+<script>
+    function MarcaModificar(idMarca, descripcion, estatus) {
+        $("#txtIdMarca1").val(idMarca);
+        $("#txtdescripcion1").val(descripcion);
+        $("#txtEstatus1").val(estatus);
+        $("#selectEstatus1").val(estatus);
+
+        $("#frmCaptura2").show();
+        $("#frmCaptura1").hide();
+    }
+
+    function btnCancelarModificar() {
+        $("#frmCaptura2").hide();
+        $("#frmCaptura1").show();
+    }
+
+    function GuardaCambios() {
+
+        $("#frmCaptura2").serialize();
+
+        $("#frmCaptura2").submit();
+
+
+    }
+</script>
+

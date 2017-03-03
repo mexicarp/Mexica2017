@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Registrar";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Registro de combustibles</h4>
+                </div>
+                <div class="alert alert-warning fade in">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    En este catalogo se registra el tipo de combustible que usa cada unidad, asi como los precios de los mismos, este catalogo es usado en otros modulos.
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Registrar", "Combustible")" id="frmCaptura1" class="form-inline" method="post">
+
+                        <div class="form-group m-r-10">
+                            <input type="text" onKeyUp="this.value=this.value.toUpperCase();" id="txtdescripcion" name="txtdescripcion" class="form-control" placeholder="Nombre combustible" required />
+                        </div>
+                        <div class="form-group m-r-10">
+                            <input type="text" onKeyUp="this.value=this.value.toUpperCase();" id="txtcostoLitro" name="txtcostoLitro" class="form-control" placeholder="0.00" required />
+                        </div>
+                        <div class="form-group m-r-10">
+                            <select class="form-control" id="selectEstatus" name="selectEstatus">
+                                <option value="0">Inactivo</option>
+                                <option value="1">Activo</option>
+                            </select>
+                        </div>
+                        <div style="display:inline-table;">
+                            <div id="btnInsertar">
+                                <button type="submit" class="btn btn-sm btn-success fa fa-save"> Insertar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form action="@Url.Action("Modificar", "Combustible")" style="display:none;" id="frmCaptura2" class="form-inline" method="post">
+                        <input type="hidden" id="txtIdCombustible1" name="txtIdCombustible" value="" class="form-control" placeholder="" />
+                        <div class="form-group m-r-10">
+                            <input type="text" onKeyUp="this.value=this.value.toUpperCase();" id="txtdescripcion1" name="txtdescripcion" class="form-control" placeholder="Marca del vehiculo" required />
+                        </div>
+                        <div class="form-group m-r-10">
+                            <input type="text" onKeyUp="this.value=this.value.toUpperCase();" id="txtcostoLitro1" name="txtcostoLitro" class="form-control" placeholder="0.00" required />
+                        </div>
+                        <div class="form-group m-r-10">
+                            <select class="form-control" id="selectEstatus1" name="selectEstatus">
+                                <option value="0">Inactivo</option>
+                                <option value="1">Activo</option>
+                            </select>
+                        </div>
+                        <div style="display:inline-table;">
+                            <button type="button" class="btn btn-sm btn-primary fa fa-pencil" onclick="GuardaCambios();"> Modificar</button>
+
+                            <button type="button" class="btn btn-sm btn-danger fa fa-warning" onclick="btnCancelarModificar();"> Cancelar</button>
+                        </div>
+                    </form>
+                    <br /><br />
+                    <div>
+                        <table id="data-table" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Descripcion</th>
+                                    <th>Costo Litro</th>
+                                    <th>estatus</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.listaCombustibles)
+                                {
+                                    <tr class="odd gradeX">
+
+                                        <td><a href="#" onclick="modificar('@item.idCombustible')">@item.idCombustible </a></td>
+                                        <td>@item.descripcion</td>
+                                        <td>@item.costoLitro</td>
+                                        <td>@Html.Raw(item.estatus == 1 ? "Activo" : "Inactivo") </td>
+                                        <td>
+                                            <a class="btn btn-primary btn-icon btn-circle" data-click="Modificar" href="#" onclick="MarcaModificar('@item.idCombustible','@item.descripcion','@item.costoLitro','@item.estatus');"><i class="fa fa-pencil"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+    </div>
+</div>
+<script>
+    function MarcaModificar(IdCombustible, descripcion, costoLitro, estatus) {
+        $("#txtIdCombustible1").val(IdCombustible);
+        $("#txtdescripcion1").val(descripcion);
+        $("#txtcostoLitro1").val(costoLitro);
+        $("#txtEstatus1").val(estatus);
+        $("#selectEstatus1").val(estatus);
+
+        $("#frmCaptura2").show();
+        $("#frmCaptura1").hide();
+    }
+
+    function btnCancelarModificar() {
+        $("#frmCaptura2").hide();
+        $("#frmCaptura1").show();
+    }
+
+    function GuardaCambios() {
+
+        $("#frmCaptura2").serialize();
+
+        $("#frmCaptura2").submit();
+
+
+    }
+</script>
+
+

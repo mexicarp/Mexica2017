@@ -1,0 +1,215 @@
+﻿
+@{
+    ViewBag.Title = "Modificar";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        @*<a href="@Url.Action("Modificar", "catEmpleados")" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-repeat"></i></a>*@
+                    </div>
+                    <h4 class="panel-title">Modifica registro de empleado</h4>
+                </div>
+                <div class="alert alert-warning fade in">
+                    <button type="button" class="close" data-dismiss="alert">
+                        @*<span aria-hidden="true">&times;</span>*@
+                    </button>
+                    Padrón de empleados del corportativo Mexica Tours, en este se capturan los datos de nuevo ingreso del empleado y sus generales.
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Modificar", "Empleado")" class="form-horizontal" method="post">
+                        <input type="hidden" onKeyUp="this.value=this.value.toUpperCase();" id="txtIdempleado" name="txtIdempleado" value="@ViewBag.modificarEmpleado.idEmpleado" class="form-control" placeholder="" required />
+                        <div style="width:100%; height:20px; background-color:#00ACAC; border-radius:3px;">
+                            <h5 style="color:white; vertical-align:middle; position:absolute; margin-top:3px;">Generales del Empleado</h5>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Fecha Ingreso</label>
+                                <div class="input-group date" id="vigenciaIniciaSeguro">
+                                    <input type="text" id="datefechaIngreso" name="datefechaIngreso" value="@ViewBag.modificarEmpleado.fechaIngreso" class="form-control" placeholder="Select Date" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Empresa</label>
+                                <select class="form-control" id="selectidEmpresa" name="selectidEmpresa">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaEmpresas)
+                                    {
+                                        <option value="@item.idEmpresa" @Html.Raw(item.idEmpresa == ViewBag.modificarEmpleado.idEmpresa ? "selected" : "")>@item.descripcion</option>
+                                    }
+                                </select>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Tipo Empleado</label>
+                                <select class="form-control" id="selectidTipoEmpleado" name="selectidTipoEmpleado">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaTipoEmp)
+                                    {
+                                        <option value="@item.idTipoEmpleado" @Html.Raw(item.idTipoEmpleado == ViewBag.modificarEmpleado.idTipoEmpleado ? "selected" : "")>@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Paterno</label>
+                                <input type="text" id="txtpaterno" name="txtpaterno" value="@ViewBag.modificarEmpleado.paterno" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Materno</label>
+                                <input type="text" id="txtmaterno" name="txtmaterno" value="@ViewBag.modificarEmpleado.materno" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Nombre(s)</label>
+                                <input type="text" id="txtnombre" name="txtnombre" value="@ViewBag.modificarEmpleado.nombre" class="form-control" placeholder="" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Fecha Nacimiento</label>
+                                <div class="input-group date" id="fechaEntrada">
+                                    <input type="text" id="datefechaNacimiento" name="datefechaNacimiento" value="@ViewBag.modificarEmpleado.fechaNacimiento" class="form-control" placeholder="Select Date" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Sexo</label>
+                                <select class="form-control" id="selectsexo" name="selectsexo">
+                                    <option value="H" @Html.Raw(ViewBag.modificarEmpleado.sexo == "H" ? "selected" : "")>Hombre</option>
+                                    <option value="M" @Html.Raw(ViewBag.modificarEmpleado.sexo == "M" ? "selected" : "")>Mujer</option>
+                                </select>
+
+
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">T.Sangre</label>
+                                <input type="text" id="txttipoSangre" name="txttipoSangre" value="@ViewBag.modificarEmpleado.tipoSangre" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Nacionalidad</label>
+                                <select class="form-control" id="selectnacionalidad" name="selectnacionalidad">
+                                    <option value="1" @Html.Raw(ViewBag.modificarEmpleado.nacionalidad == 1 ? "selected" : "")>Mex.</option>
+                                    <option value="2" @Html.Raw(ViewBag.modificarEmpleado.nacionalidad == 2 ? "selected" : "")>Ext.</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Ciudad</label>
+                                <select class="form-control" id="selectidCiudad" name="selectidCiudad">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaCiudades)
+                                    {
+                                        <option value="@item.idCiudad" @Html.Raw(item.idCiudad == ViewBag.modificarEmpleado.idCiudad ? "selected" : "")>@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">CURP</label>
+                                <input type="text" id="txtcurp" name="txtcurp" value="@ViewBag.modificarEmpleado.curp" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">RFC</label>
+                                <input type="text" id="txtrfc" name="txtrfc" value="@ViewBag.modificarEmpleado.rfc" class="form-control" placeholder="" required />
+                            </div>
+                        </div>
+                        <br />
+                        <div style="width:100%; height:20px; background-color:#00ACAC; border-radius:3px;">
+                            <h5 style="color:white; vertical-align:middle; position:absolute; margin-top:3px;">Datos Domiciliarios</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="exampleInputEmail1">Domicilio</label>
+                                <input type="text" id="txtdomicilio" name="txtdomicilio" value="@ViewBag.modificarEmpleado.domicilio" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Numero</label>
+                                <input type="text" id="txtnumero" name="txtnumero" value="@ViewBag.modificarEmpleado.numero" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">C.P.</label>
+                                <input type="text" id="txtcp" name="txtcp" value="@ViewBag.modificarEmpleado.cp" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Colonia</label>
+                                <input type="text" id="txtcolonia" name="txtcolonia" value="@ViewBag.modificarEmpleado.colonia" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Municipio</label>
+                                <input type="text" id="txtmunicipio" name="txtmunicipio" value="@ViewBag.modificarEmpleado.municipio" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Ciudad</label>
+                                <select class="form-control" id="selectidCiudad2" name="selectidCiudad2">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaCiudades)
+                                    {
+                                        <option value="@item.idCiudad" @Html.Raw(item.idCiudad == ViewBag.modificarEmpleado.idCiudad2 ? "selected" : "")>@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div style="width:100%; height:20px; background-color:#00ACAC; border-radius:3px;">
+                            <h5 style="color:white; vertical-align:middle; position:absolute; margin-top:3px;">Datos de Contacto e Identificación</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Telefono(s)</label>
+                                <input type="text" id="txttelefono" name="txttelefono" value="@ViewBag.modificarEmpleado.telefono" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Correo Electrónico</label>
+                                <input type="text" id="txtemail" name="txtemail" value="@ViewBag.modificarEmpleado.email" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Identificación</label>
+                                <select class="form-control" id="selectidIdentificacion" name="selectidIdentificacion">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaIden)
+                                    {
+                                        <option value="@item.idIdentificacion" @Html.Raw(item.idIdentificacion == ViewBag.modificarEmpleado.idIdentificacion ? "selected" : "")>@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Numero Identificación</label>
+                                <input type="text" id="txtnumIdentificacion" name="txtnumIdentificacion" value="@ViewBag.modificarEmpleado.numIdentificacion" class="form-control" placeholder="Numeron" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Fotografia</label>
+                                <input readonly="readonly" type="text" id="txtfoto" name="txtfoto" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Estatus</label>
+                                <select class="form-control" id="selectestatus" name="selectestatus">
+                                    <option value="0" @Html.Raw(ViewBag.modificarEmpleado.estatus == 0 ? "selected" : "")>Inactivo</option>
+                                    <option value="1" @Html.Raw(ViewBag.modificarEmpleado.estatus == 1 ? "selected" : "")>Activo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <div class="col-md-12" align="center">
+                                    <button style="width:10%;" type="submit" class="btn btn-sm btn-success">Actualizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+<!-- end panel -->

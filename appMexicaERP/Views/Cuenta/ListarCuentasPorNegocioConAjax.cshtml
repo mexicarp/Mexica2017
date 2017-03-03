@@ -1,0 +1,19 @@
+﻿@{ Layout = null; }
+
+@foreach (var item in ViewBag.listaTCuenta)
+{
+    <tr>
+        <td>@item.numeroCuenta</td>
+        <td align="right">@String.Format("{0,14:c}", item.saldoInicial)</td>
+        <td align="right">@String.Format("{0,14:c}", item.saldoTotal)</td>
+        <td align="center">@Html.Raw(item.estatus == true ? "<span style='background-color:green; color:white; padding:4px; border-radius:3px;'>Activo</span>" : "<span style='background-color:red; color:white; padding:4px; border-radius:3px;'>Inactivo</span>")</td>
+        <td style="text-align:center;">
+            <a class="btn btn-warning btn-icon btn-circle"  href="#"><i class="fa fa-eye"></i></a>
+            | 
+            <a class="btn btn-primary btn-icon btn-circle" data-click="Modificar" href="#" onclick="CuentaModificar('@item.idCuenta');"><i class="fa fa-pencil"></i></a>
+            |
+            <a class="btn btn-danger btn-icon btn-circle" data-click="Eliminar" href="#"><i class="fa fa-warning"></i></a>
+            @*<button type="button" class="btn btn-sm btn-danger m-r-5 fa fa-warning" onclick="EliminarBanco('@item.idCuenta');"> Eliminar</button>*@
+        </td>
+    </tr>
+}

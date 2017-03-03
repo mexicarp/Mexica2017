@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewBag.Title = "Registrar";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="@Url.Action("Consulta", "Empleado")" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-repeat"></i></a>
+                    </div>
+                    <h4 class="panel-title">Registro de Empleados</h4>
+                </div>
+                <div class="alert alert-warning fade in">
+                    <button type="button" class="close" data-dismiss="alert">
+                        @*<span aria-hidden="true">&times;</span>*@
+                    </button>
+                    Padrón de empleados del corportativo Mexica Tours, en este se capturan los datos de nuevo ingreso del empleado y sus generales.
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Registrar", "Empleado")" class="form-horizontal" method="post">
+                        <div style="width:100%; height:20px; background-color:#00ACAC; border-radius:3px;">
+                            <h5 style="color:white; vertical-align:middle; position:absolute; margin-top:3px;">Generales del Empleado</h5>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Fecha Ingreso</label>
+                                <div class="input-group date" id="vigenciaIniciaSeguro">
+                                    <input type="text" id="datefechaIngreso" name="datefechaIngreso" class="form-control" placeholder="Select Date" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Empresa</label>
+                                <select class="form-control" id="selectidEmpresa" name="selectidEmpresa">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaEmpresas)
+                                    {
+                                        <option value="@item.idEmpresa">@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Tipo Empleado</label>
+                                <select class="form-control" id="selectidTipoEmpleado" name="selectidTipoEmpleado">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaTipoEmp)
+                                    {
+                                        <option value="@item.idTipoEmpleado">@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Paterno</label>
+                                <input type="text" id="txtpaterno" name="txtpaterno" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Materno</label>
+                                <input type="text" id="txtmaterno" name="txtmaterno" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Nombre(s)</label>
+                                <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Fecha Nacimiento</label>
+                                <div class="input-group date" id="fechaEntrada">
+                                    <input type="text" id="datefechaNacimiento" name="datefechaNacimiento" class="form-control" placeholder="Select Date" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Sexo</label>
+                                <select class="form-control" id="selectsexo" name="selectsexo">
+                                    <option value="0">-</option>
+                                    <option value="H">Hombre</option>
+                                    <option value="M">Mujer</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">T.Sangre</label>
+                                <input type="text" id="txttipoSangre" name="txttipoSangre" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Nacionalidad</label>
+                                <select class="form-control" id="selectnacionalidad" name="selectnacionalidad">
+                                    <option value="0">-</option>
+                                    <option value="1">Mex.</option>
+                                    <option value="2">Ext.</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Ciudad</label>
+                                <select class="form-control" id="selectidCiudad" name="selectidCiudad">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaCiudades)
+                                    {
+                                        <option value="@item.idCiudad">@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">CURP</label>
+                                <input type="text" id="txtcurp" name="txtcurp" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">RFC</label>
+                                <input type="text" id="txtrfc" name="txtrfc" class="form-control" placeholder="" required />
+                            </div>
+                        </div>
+                        <br />
+                        <div style="width:100%; height:20px; background-color:#00ACAC; border-radius:3px;">
+                            <h5 style="color:white; vertical-align:middle; position:absolute; margin-top:3px;">Datos Domiciliarios</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="exampleInputEmail1">Domicilio</label>
+                                <input type="text" id="txtdomicilio" name="txtdomicilio" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Numero</label>
+                                <input type="text" id="txtnumero" name="txtnumero" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">C.P.</label>
+                                <input type="text" id="txtcp" name="txtcp" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Colonia</label>
+                                <input type="text" id="txtcolonia" name="txtcolonia" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Municipio</label>
+                                <input type="text" id="txtmunicipio" name="txtmunicipio" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Ciudad</label>
+                                <select class="form-control" id="selectidCiudad2" name="selectidCiudad2">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaCiudades)
+                                    {
+                                        <option value="@item.idCiudad">@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div style="width:100%; height:20px; background-color:#00ACAC; border-radius:3px;">
+                            <h5 style="color:white; vertical-align:middle; position:absolute; margin-top:3px;">Datos de Contacto e Identificación</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Telefono(s)</label>
+                                <input type="text" id="txttelefono" name="txttelefono" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Correo Electrónico</label>
+                                <input type="text" id="txtemail" name="txtemail" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1" style="font:bold;">Identificación</label>
+                                <select class="form-control" id="selectidIdentificacion" name="selectidIdentificacion">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaIden)
+                                    {
+                                        <option value="@item.idIdentificacion">@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Numero Identificación</label>
+                                <input type="text" id="txtnumIdentificacion" name="txtnumIdentificacion" class="form-control" placeholder="Numeron" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Fotografia</label>
+                                <input readonly="readonly" type="text" id="txtfoto" name="txtfoto" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Estatus</label>
+                                <select class="form-control" id="selectestatus" name="selectestatus">
+                                    <option value="0">Inactivo</option>
+                                    <option value="1">Activo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <div class="col-md-12" align="center">
+                                    <button style="width:10%;" type="submit" class="btn btn-sm btn-success">Insertar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+<!-- end panel -->

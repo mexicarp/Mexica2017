@@ -1,0 +1,407 @@
+﻿
+@{
+    ViewBag.Title = "Modificar";
+}
+<div class="container">
+    <h2>Editar Informacion Control Vehicular</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Modificaciones</h4>
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Modificar", "ControlVehicular")" class="form-horizontal" method="post">
+                        <input type="hidden" onKeyUp="this.value=this.value.toUpperCase();" id="txtidControl" name="txtidControl" value="" class="form-control" placeholder="" required />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Clave Servicio</label>
+                                <input type="text" id="txtclaveServicio" readonly="readonly" name="txtclaveServicio" value="@ViewBag.modificarControl.claveServicio" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Destino</label>
+                                <input type="text" id="txtdestino" name="txtdestino" readonly="readonly" value="@ViewBag.modificarControl.destino" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Unidad</label>
+                                <input type="text" id="txtidFlotilla" name="txtidFlotilla" readonly="readonly" value="@ViewBag.modificarControl.parentFlotilla.numEconomico" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Fecha Salida</label>
+                                <div class="input-group date" id="fechaSalida">
+                                    <input type="text" class="form-control" id="datefechaSalida" name="datefechaSalida" readonly="readonly" value="" placeholder="Select Date" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Hora Salida</label>
+                                <input type="text" id="txthoraSalida" name="txthoraSalida" readonly="readonly" value="" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Km. Salida</label>
+                                <input type="text" id="txtkmSalida" name="txtkmSalida" readonly="readonly" value="" class="form-control" placeholder="" required />
+                            </div>
+
+
+                            <div class="row">
+                                <!-- begin col-12 -->
+                                <div class="col-md-4">
+                                    <!-- begin panel -->
+                                    <div class="panel panel-primary" data-sortable-id="form-stuff-3" style="border:1px solid;">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">Exteriores</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkeluces" name="checkeluces" value="" @Html.Raw(ViewBag.modificarControl.eluces == true ? "checked" : "") />
+                                                    Unidad de luces
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkecuartoLuces" name="checkecuartoLuces" value="" @Html.Raw(ViewBag.modificarControl.ecuartoLuces == true ? "checked" : "") />
+                                                    1/4 Luces
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkeantena" name="checkeantena" value="" @Html.Raw(ViewBag.modificarControl.eantena == true ? "checked" : "") />
+                                                    Antena
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkeespejoDerecho" name="checkeespejoDerecho" value="" />
+                                                    Espejo lateral derecho
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkeespejoIzquierdo" name="checkeespejoIzquierdo" value="" />
+                                                    Espejo lateral izquierdo
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkecristales" name="checkecristales" value="" />
+                                                    Cristales
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkelogoMarca" name="checkelogoMarca" value="" />
+                                                    Logotipo de la marca
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkellantas4" name="checkellantas4" value="" />
+                                                    4 llantas
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checketapones4" name="checketapones4" value="" />
+                                                    4 tapones de llantas
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkemolduras" name="checkemolduras" value="" />
+                                                    Molduras completas
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checketaponGas" name="checketaponGas" value="" />
+                                                    Tapón de gasolina
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkecarroceria" name="checkecarroceria" value="" />
+                                                    Carrocería sin golpes
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkeclaxon" name="checkeclaxon" value="" />
+                                                    Bocinas de claxon
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- end panel -->
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- begin panel -->
+                                    <div class="panel panel-primary" data-sortable-id="form-stuff-3" style="border:1px solid;">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">Interiores</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkitablero" name="checkitablero" value="" />
+                                                    Instrumentos de tablero
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkiclima" name="checkiclima" value="" />
+                                                    Clima
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkiplumas" name="checkiplumas" value="" />
+                                                    Limpiadores (plumas)
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkiradio" name="checkiradio" value="" />
+                                                    Radio
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkipantalla" name="checkipantalla" value="" />
+                                                    Pantalla
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkicamara" name="checkicamara" value="" />
+                                                    Camara
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkibocinas" name="checkibocinas" value="" />
+                                                    Bocinas
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkiencendedor" name="checkiencendedor" value="" />
+                                                    Encendedor
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkiceniceros" name="checkiceniceros" value="" />
+                                                    Ceniceros
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkicinturones" name="checkicinturones" value="" />
+                                                    Cinturones
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkimanijas" name="checkimanijas" value="" />
+                                                    Manijas interiores
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkitapetes" name="checkitapetes" value="" />
+                                                    Tapetes
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkivestiduras" name="checkivestiduras" value="" />
+                                                    Vestiduras
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- begin panel -->
+                                    <div class="panel panel-primary" data-sortable-id="form-stuff-3" style="border:1px solid;">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">Accesorios</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkagato" name="checkagato" value="" />
+                                                    Gato Hidraulico
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkallave" name="checkallave" value="" />
+                                                    Llave de rueda
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkaherramienta" name="checkaherramienta" value="" />
+                                                    Estuche de herramientas
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkatriangulo" name="checkatriangulo" value="" />
+                                                    Triangulo
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkallantarefa" name="checkallantarefa" value="" />
+                                                    Llanta de refacción
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkaextinguidor" name="checkaextinguidor" value="" />
+                                                    Extinguidor
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checktcirculacion" name="checktcirculacion" value="" />
+                                                    Tarjeta de Circulación
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checkpseguro" name="checkpseguro" value="" />
+                                                    Documentación del Seguro
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checktverficacion" name="checktverficacion" value="" />
+                                                    Tarjet de Verificación
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="checklicencia" name="checklicencia" value="" />
+                                                    Licencia del Operador
+                                                </label>
+                                            </div>
+
+                                            <br />
+                                            <div class="col-md-5">
+                                                <label for="exampleInputEmail1">Tanque</label>
+                                                <select class="form-control" id="selecttanque" name="selecttanque">
+                                                    <option value="1">0</option>
+                                                    <option value="2">1/4</option>
+                                                    <option value="3">1/2</option>
+                                                    <option value="4">3/4</option>
+                                                    <option value="5">Full</option>
+                                                    <option value="@ViewBag.modificarControl.idControl" @Html.Raw(ViewBag.modificarControl.idControl == @ViewBag.modificarControl.idControl ? "selected" : "")>@ViewBag.modificarControl.tanque</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end panel -->
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <label for="exampleInputEmail1" style="font:bold;">Km. entrada</label>
+                                    <input type="text" id="txtkmEntrada" name="txtkmEntrada" value="" class="form-control" placeholder="" required />
+                                </div>
+                                <div class="col-md-1">
+                                    <label for="exampleInputEmail1">Km.Recorrido</label>
+                                    <input type="text" id="txtkmRecorrido" name="txtkmRecorrido" value="" class="form-control" placeholder="" required />
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" id="fechaEntrada">Fecha Entrada</label>
+                                    <input type="text" id="datefechaEntrada" name="datefechaEntrada" value="" class="form-control" placeholder="" required />
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1">Hora Entrada</label>
+                                    <input type="text" id="txthoraEntrada" name="txthoraEntrada" value="" class="form-control" placeholder="" required />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Observaciones</label>
+                                    <input type="text" id="txtobservaciones" name="txtobservaciones" value="" class="form-control" placeholder="" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <br /><br />
+                                <div class="form-group col-md-12">
+                                    <div class="col-md-12" align="center">
+                                        <button style="width:10%;" type="button" class="btn btn-sm btn-success" onclick="checaCheks();">Modificar Informacion</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/template/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+    function checaCheks()
+    {
+      // $("#checkeluces").val(document.getElementById("checkeluces").checked);
+      //  x = document.getElementById("checkeluces").checked;
+      //  $("#checkeluces").val(x);
+
+        $("#checkeluces").val(document.getElementById("checkeluces").checked);
+        $("#checkecuartoLuces").val(document.getElementById("checkecuartoLuces").checked);
+        $("#checkeantena").val(document.getElementById("checkeantena").checked);
+        $("#checkeespejoDerecho").val(document.getElementById("checkeespejoDerecho").checked);
+        $("#checkeespejoIzquierdo").val(document.getElementById("checkeespejoIzquierdo").checked);
+        $("#checkecristales").val(document.getElementById("checkecristales").checked);
+        $("#checkelogoMarca").val(document.getElementById("checkelogoMarca").checked);
+        $("#checkellantas4").val(document.getElementById("checkellantas4").checked);
+        $("#checketapones4").val(document.getElementById("checketapones4").checked);
+        $("#checkemolduras").val(document.getElementById("checkemolduras").checked);
+        $("#checketaponGas").val(document.getElementById("checketaponGas").checked);
+        $("#checkecarroceria").val(document.getElementById("checkecarroceria").checked);
+        $("#checkeclaxon").val(document.getElementById("checkeclaxon").checked);
+
+        $("#checkitablero").val(document.getElementById("checkitablero").checked);
+        $("#checkiclima").val(document.getElementById("checkiclima").checked);
+        $("#checkiplumas").val(document.getElementById("checkiplumas").checked);
+        $("#checkiradio").val(document.getElementById("checkiradio").checked);
+        $("#checkipantalla").val(document.getElementById("checkipantalla").checked);
+        $("#checkicamara").val(document.getElementById("checkicamara").checked);
+        $("#checkibocinas").val(document.getElementById("checkibocinas").checked);
+        $("#checkiencendedor").val(document.getElementById("checkiencendedor").checked);
+        $("#checkiceniceros").val(document.getElementById("checkiceniceros").checked);
+        $("#checkicinturones").val(document.getElementById("checkicinturones").checked);
+        $("#checkimanijas").val(document.getElementById("checkimanijas").checked);
+        $("#checkitapetes").val(document.getElementById("checkitapetes").checked);
+        $("#checkivestiduras").val(document.getElementById("checkivestiduras").checked);
+
+        $("#checkagato").val(document.getElementById("checkagato").checked);
+        $("#checkallave").val(document.getElementById("checkallave").checked);
+        $("#checkaherramienta").val(document.getElementById("checkaherramienta").checked);
+        $("#checkatriangulo").val(document.getElementById("checkatriangulo").checked);
+        $("#checkallantarefa").val(document.getElementById("checkallantarefa").checked);
+        $("#checkaextinguidor").val(document.getElementById("checkaextinguidor").checked);
+
+        $("#checktcirculacion").val(document.getElementById("checktcirculacion").checked);
+        $("#checkpseguro").val(document.getElementById("checkpseguro").checked);
+        $("#checktverficacion").val(document.getElementById("checktverficacion").checked);
+        $("#checklicencia").val(document.getElementById("checklicencia").checked);
+        $("#frmEnviarDatos").submit();
+    }
+</script>

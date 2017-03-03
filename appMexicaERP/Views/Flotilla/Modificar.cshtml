@@ -1,0 +1,200 @@
+﻿
+@{
+    ViewBag.Title = "Modificar";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="@Url.Action("Consulta", "Flotilla")" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-repeat"></i></a>
+                    </div>
+                    <h4 class="panel-title">Editar información :: Vehiculos</h4>
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Modificar", "Flotilla")" class="form-horizontal" method="post">
+                        <input type="hidden" onKeyUp="this.value=this.value.toUpperCase();" id="txtIdFlotilla" name="txtIdFlotilla" value="@ViewBag.modificarFlotilla.idFlotilla" class="form-control" placeholder="" required />
+                        <div style="width:100%; height:20px; background-color:#D9E0E7; border-radius:3px;">
+                            <h5 style="color:black; font-size:small; vertical-align:middle; position:absolute; margin-top:3px;">Caracteristicas</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Marca</label>
+                                <select class="form-control" id="selectIdMarca" name="selectIdMarca">
+                                    @foreach (var item in ViewBag.listaMarcas)
+                                    {
+                                        <option value="@item.idMarca" @Html.Raw(item.idMarca == ViewBag.modificarFlotilla.idMarca ? "selected" : "")>@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Modelo</label>
+                                <input type="text" maxlength="4" id="txttmodelo" name="txttmodelo" value="@ViewBag.modificarFlotilla.modelo" class="form-control" onkeypress="return valida(event)" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Tipo</label>
+                                <input type="text" maxlength="14" id="txttipo" name="txttipo" value="@ViewBag.modificarFlotilla.tipo" class="form-control" required />
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">N° Serie</label>
+                                <input type="text" maxlength="24" id="txtserie" name="txtserie" value="@ViewBag.modificarFlotilla.serie" class="form-control" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Combustible</label>
+                                <select class="form-control" id="selectidCombustible" name="selectidCombustible">
+                                    @foreach (var item in ViewBag.listaCombustibles)
+                                    {
+                                        <option value="@item.idCombustible" @Html.Raw(item.idCombustible == ViewBag.modificarFlotilla.idCombustible ? "selected" : "")>@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Cap. Litros</label>
+                                <input type="text" maxlength="2" id="txtlitros" name="txtlitros" class="form-control" value="@ViewBag.modificarFlotilla.litros" onkeypress="return valida(event)" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">N° Pasajeros</label>
+                                <input type="text" maxlength="2" id="txtcapacidad" name="txtcapacidad" class="form-control" value="@ViewBag.modificarFlotilla.capacidad" onkeypress="return valida(event)" required />
+                            </div>
+                        </div>
+                        <br />
+                        <div style="width:100%; height:20px; background-color:#D9E0E7; border-radius:3px;">
+                            <h5 style="color:black; font-size:small; vertical-align:middle; position:absolute; margin-top:3px;">Indetificación de la Unidad y Seguro</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Kilometraje</label>
+                                <input type="text" maxlength="7" id="txtkilometraje" name="txtkilometraje" class="form-control" value="@ViewBag.modificarFlotilla.kilometraje" onkeypress="return valida(event)" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Placas</label>
+                                <input type="text" maxlength="14" id="txtplacas" name="txtplacas" class="form-control" value="@ViewBag.modificarFlotilla.placas" required />
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">N° Economico</label>
+                                <input type="text" maxlength="9" id="txtnumEconomico" name="txtnumEconomico" class="form-control" value="@ViewBag.modificarFlotilla.numEconomico" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Asegurado</label>
+                                <select class="form-control" id="selectseguro" name="selectseguro">
+                                    <option value="1" @Html.Raw(ViewBag.modificarFlotilla.seguro == 1 ? "selected" : "")>Si</option>
+                                    <option value="2" @Html.Raw(ViewBag.modificarFlotilla.seguro == 2 ? "selected" : "")>No</option>
+                                </select>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Aseguradora</label>
+                                <input type="text" maxlength="24" id="txtciaSeguro" name="txtciaSeguro" class="form-control" value="@ViewBag.modificarFlotilla.ciaSeguro" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Monto Pago</label>
+                                <input type="text" maxlength="14" id="txtmontoPagoSeguro" name="txtmontoPagoSeguro" class="form-control" value="@ViewBag.modificarFlotilla.montoPagoSeguro" onkeypress="return valida(event)" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Inicia Seguro</label>
+                                <div class="input-group date" id="vigenciaIniciaSeguro">
+                                    <input type="text" id="datevigenciaIniciaSeguro" name="datevigenciaIniciaSeguro" class="form-control" value="@ViewBag.modificarFlotilla.vigenciaIniciaSeguro" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Fin Seguro</label>
+                                <div class="input-group date" id="vigenciaFinSeguro">
+                                    <input type="text" id="datevigenciaFinSeguro" name="datevigenciaFinSeguro" class="form-control" value="@ViewBag.modificarFlotilla.vigenciaFinSeguro" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div style="width:100%; height:20px; background-color:#D9E0E7; border-radius:3px;">
+                            <h5 style="color:black; font-size:small; vertical-align:middle; position:absolute; margin-top:3px;">Asignación y Situación de la Unidad</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Empresa Asginada</label>
+                                <select class="form-control" id="selectIdEmpleado" name="selectIdEmpleado">
+                                    @foreach (var item in ViewBag.listaEmpresas)
+                                    {
+                                        <option value="@item.idEmpresa" @Html.Raw(item.idEmpresa == ViewBag.modificarFlotilla.idEmpresa ? "selected" : "")>@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Operador Asignado</label>
+                                <select class="form-control" id="selectOperador" name="selectOperador">
+                                    @foreach (var item in ViewBag.listaEmpleados)
+                                    {
+                                        <option value="@item.idEmpleado" @Html.Raw(item.idEmpleado == ViewBag.modificarFlotilla.idEmpleado ? "selected" : "")>@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Estatus Pago</label>
+                                <select class="form-control" id="selectestatusPago" name="selectestatusPago">
+                                    <option value="1" @Html.Raw(ViewBag.modificarFlotilla.estatusPago == 1 ? "selected" : "")>Liquidado</option>
+                                    <option value="2" @Html.Raw(ViewBag.modificarFlotilla.estatusPago == 2 ? "selected" : "")>Credito</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Monto Pago</label>
+                                <input type="text" maxlength="14" id="txtpagoMensual" name="txtpagoMensual" class="form-control" value="@ViewBag.modificarFlotilla.pagoMensual" onkeypress="return valida(event)" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Dia Pago</label>
+                                <input type="text" maxlength="2" id="txtdiaPagoUnidad" name="txtdiaPagoUnidad" class="form-control" value="@ViewBag.modificarFlotilla.diaPagoUnidad" onkeypress="return valida(event)" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Comentarios</label>
+                                <input type="text" maxlength="199" id="txtobservaciones" name="txtobservaciones" class="form-control" value="@ViewBag.modificarFlotilla.observaciones" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Estatus</label>
+                                <select class="form-control" id="selectestatus" name="selectestatus">
+                                    <option value="0" @Html.Raw(ViewBag.modificarFlotilla.estatus == 0 ? "selected" : "")>Inactivo</option>
+                                    <option value="1" @Html.Raw(ViewBag.modificarFlotilla.estatus == 1 ? "selected" : "")>Activo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <br />
+                            <hr />
+                            <br />
+
+                            <div class="form-group col-md-12">
+                                <div class="col-md-12" align="center">
+                                    <button style="width:10%;" type="submit" class="btn btn-sm btn-success">Actualizar Datos</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end panel -->
+</div>
+
+<script>
+function valida(e){
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla==8){
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros
+    patron =/[0-9-.]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+</script>
+

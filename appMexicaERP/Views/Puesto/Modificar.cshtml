@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Modificar";
+}
+
+<div class="container">
+    <h2>Editar Informacion [Categorias Laborales]</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Registro de Categorias</h4>
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Modificar", "Puesto")" class="form-horizontal" method="post">
+                        <input type="hidden" onKeyUp="this.value=this.value.toUpperCase();" id="txtIdPuesto" name="txtIdPuesto" value="@ViewBag.modificarPuesto.idPuesto" class="form-control" placeholder="Clave de categoria" required />
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" align="left">Categoria</label>
+                            <div class="col-md-2">
+                                <input type="text" readonly="readonly" onKeyUp="this.value=this.value.toUpperCase();" id="txtcategoria" name="txtcategoria" value="@ViewBag.modificarPuesto.categoria" class="form-control" placeholder="Clave de categoria" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" align="left">Descripcion</label>
+                            <div class="col-md-3">
+                                <input type="text" id="txtdescripcion" name="txtdescripcion" value="@ViewBag.modificarPuesto.descripcion" class="form-control" placeholder="Nombre de la categoria" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label" align="left">Funciones del Puesto</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" id="txtalcancePuesto" name="txtalcancePuesto" placeholder="Descripcion del categoria, funciones,alcances,etc" rows="5" required>@ViewBag.modificarPuesto.alcancePuesto</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Horas Laborables</label>
+                            <div class="col-md-2">
+                                <input type="text" id="txthoras" name="txthoras" value="@ViewBag.modificarPuesto.horas" class="form-control" placeholder="Horas" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Costo</label>
+                            <div class="col-md-2">
+                                <input type="text" id="txtcosto" name="txtcosto" value="@ViewBag.modificarPuesto.costo" class="form-control" placeholder="Costo de categoria" required />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-12" align="center">
+                                <button style="width:10%;" type="submit" class="btn btn-sm btn-success">Actualizar Datos</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+    </div>
+</div>
+
+
+

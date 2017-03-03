@@ -1,0 +1,8 @@
+﻿@{ Layout = null; }
+<select name="selecIdCuenta" id="selecIdCuenta" class="form-control" data-size="10" onchange="paginaAjax('body-data-table', { id : this.value }, '@Url.Action("ListarCuentasPorNegocioConAjax", "Cuenta")', 'POST', null, null, false, true);">
+    <option value="">Seleccione un Negocio</option>
+    @foreach (var item in ViewBag.listaTNegocio)
+    {
+        <option value="@item.idNegocio">@item.nombre</option>
+    }
+</select>

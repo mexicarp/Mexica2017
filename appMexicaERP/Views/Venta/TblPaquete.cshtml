@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<thead>
+    <tr>
+        <th>Tour</th>
+        <th>Detalle</th>
+    </tr>
+</thead>
+<tbody id="body-data-table">
+    @foreach (var item in ViewBag.listaPaqueteTour)
+    {
+        <tr>
+            <td>@item.idPaquete</td>
+            <td>@item.parenTour.tour</td>
+            @*<td>@(item.estatus ? "Activo" : "Inactivo")</td>*@
+            @*<td>
+                    <input type="button" class="btn btn-sm btn-primary m-r-5 fa fa-save" value="Modificar" />
+                </td>*@
+        </tr>
+    }
+</tbody>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            Tbl_1.init();
+        });
+</script>
+
+

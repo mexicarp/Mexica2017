@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Modificar";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- begin col-6 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading danger">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">Movimientos de Cuentas</h4>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" id="frmRegistrarMovimineto">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Bancos</label>
+                                <select name="selectBancos" id="selectBancos" class="form-control input-sm" data-size="10" data-live-search="true" data-style="btn-success" onchange="paginaAjax('selectNegocio', { id : this.value }, '@Url.Action("VerPorIdBancoConAjaxParaMovimiento", "Negocio")', 'POST', null, null, false, true);">
+                                    <option value=""></option>
+                                    @foreach (var item in ViewBag.listaBancos)
+                                    {
+                                        <option value="@item.idBanco">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Negocios</label>
+                                    <select name="selectNegocio" id="selectNegocio" class="form-control input-sm" data-size="10" data-live-search="true" data-style="btn-default" onchange="paginaAjax('selectCuentas', { id : this.value}, '@Url.Action("VerPorIdCuentaConAjaxParaMovimiento", "Cuenta")', 'POST', null, null, false, true)"></select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Cuentas</label>
+                                    <select name="selectCuentas" id="selectCuentas" class="form-control input-sm limpiarCampos" data-size="10" data-live-search="true" data-style="btn-default">
+        
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label>Transación</label>
+                                    <select name="selectTipoTransacion" id="selectTipoTransacion" class="form-control input-sm limpiarCampos" data-size="10" data-live-search="true" data-style="btn-default">
+                                        <option value="1">Deposito</option>
+                                        <option value="0">Retiro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>Cantidad</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" class="form-control input-sm limpiarCampos" id="txtCantidad" name="txtCantidad">
+                                    <span class="input-group-addon">.00</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Descripcion</label>
+                                <input type="text" id="txtDescripcion" name="txtDescripcion" value="@ViewBag.modificarTMovimiento.descripcion" class="form-control input-sm limpiarCampos" />
+                            </div>
+                            <div class="col-md-3">
+                                <label>Referencia</label>
+                                <input type="text" id="txtReferencia" name="txtReferencia" value="@ViewBag.modificarTMovimiento.referencia" class="form-control input-sm limpiarCampos" />
+                            </div>
+                            <div class="col-md-3">
+                                <label>Fecha</label>
+                                <input type="text" class="form-control input-sm" id="datepicker-default" name="datepicker-default" placeholder="Seleccione la Fecha" value="04/01/2014" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Autorizado por</label>
+                                <input type="text" id="txtxAutorizadopor" name="txtxAutorizadopor" value="@ViewBag.modificarTMovimiento.autorizacion" class="form-control input-sm limpiarCampos" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Concepto</label>
+                                <input type="text" id="txtConcepto" name="txtConcepto" value="@ViewBag.modificarTMovimiento.concepto" class="form-control input-sm limpiarCampos" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12" style="text-align:right;">
+                                <input type="button" value="Guardar..." class="fa fa-save btn btn-sm btn-primary" onclick="registrarMovimiento();">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+    </div>
+</div>
+
+<script>
+    function registrarMovimiento()
+    {
+        paginaAjax('add-with-callbacks',
+            $('#frmRegistrarMovimineto').serialize(),
+
+            '@Url.Action("Registrar", "Movimiento")', 'POST', null, null, false, true);
+
+        $(".limpiarCampos").val("");
+
+    }
+
+</script>

@@ -1,0 +1,1123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <title>Contabilidad</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="~/Content/FechaHora/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/css/style.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/css/style-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/css/theme/default.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+    <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <!-- ================== ROBERTO INICIO ================== -->
+    <link href="~/Content/template/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/DataTables/extensions/Buttons/css/buttons.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <!-- ================== ROBERTO FIN ================== -->
+
+    <link href="~/Content/template/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/ionRangeSlider/css/ion.rangeSlider.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/ionRangeSlider/css/ion.rangeSlider.skinNice.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/password-indicator/css/password-indicator.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap-combobox/css/bootstrap-combobox.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/jquery-tag-it/css/jquery.tagit.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <link href="~/Content/template/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/DataTables/extensions/Buttons/css/buttons.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL STYLE ================== -->
+
+    <link href="~/Content/miCodigos/css/cssComponente.css" rel="stylesheet" />
+    <link href="~/Content/miCodigos/css/ccsMensajeGlobal.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+
+    <link href="~/Content/template/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/powerange/powerange.min.css" rel="stylesheet" />
+
+    <script src="~/Content/template/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/miCodigos/js/jsMensajeGlobal.js"></script>
+
+    <!-- ================== END PAGE LEVEL STYLE ================== -->
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="~/Content/template/assets/plugins/pace/pace.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+</head>
+<body>
+
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
+    <!-- begin #page-container -->
+    <div id="page-container" class="page-container fade page-without-sidebar page-header-fixed page-with-top-menu">
+        <!-- begin #header -->
+        <div id="header" class="header navbar navbar-default navbar-fixed-top">
+            <!-- begin container-fluid -->
+            <div class="container-fluid">
+                <!-- begin mobile sidebar expand / collapse button -->
+                <div class="navbar-header">
+                    <!--<a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> Color Admin</a>-->
+                    <img src="http://mexicatours.com/wp-content/uploads/2016/12/logo.png" width="200px" alt="Alternate Text" />
+                    <button type="button" class="navbar-toggle" data-click="top-menu-toggled">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- end mobile sidebar expand / collapse button -->
+                <!-- begin header navigation right -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="navbar-form full-width">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Buscar..." />
+                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="label">5</span>
+                        </a>
+                        <ul class="dropdown-menu media-list pull-right animated fadeInDown">
+                            <li class="dropdown-header">Notifications (5)</li>
+                            <li class="media">
+                                <a href="javascript:;">
+                                    <div class="media-left"><i class="fa fa-bug media-object bg-red"></i></div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading">Server Error Reports</h6>
+                                        <div class="text-muted f-s-11">3 minutes ago</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="media">
+                                <a href="javascript:;">
+                                    <div class="media-left"><img src="~/Content/template/assets/img/user-1.jpg" class="media-object" alt="" /></div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading">John Smith</h6>
+                                        <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+                                        <div class="text-muted f-s-11">25 minutes ago</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="media">
+                                <a href="javascript:;">
+                                    <div class="media-left"><img src="~/Content/template/assets/img/user-2.jpg" class="media-object" alt="" /></div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading">Olivia</h6>
+                                        <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+                                        <div class="text-muted f-s-11">35 minutes ago</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="media">
+                                <a href="javascript:;">
+                                    <div class="media-left"><i class="fa fa-plus media-object bg-green"></i></div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading"> New User Registered</h6>
+                                        <div class="text-muted f-s-11">1 hour ago</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="media">
+                                <a href="javascript:;">
+                                    <div class="media-left"><i class="fa fa-envelope media-object bg-blue"></i></div>
+                                    <div class="media-body">
+                                        <h6 class="media-heading"> New Email From John</h6>
+                                        <div class="text-muted f-s-11">2 hour ago</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-footer text-center">
+                                <a href="javascript:;">View more</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown navbar-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="~/Content/template/assets/img/user-13.jpg" alt="" />
+                            <span class="hidden-xs">@HttpContext.Current.Session["nombre"]</span> <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInLeft">
+                            <li class="arrow"></li>
+                            <!--<li><a href="javascript:;">Edit Profile</a></li>
+                            <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
+                            <li><a href="javascript:;">Calendar</a></li>
+                            <li><a href="javascript:;">Setting</a></li>-->
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Logout", "Usuario")">Cerrar Sesion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end header navigation right -->
+            </div>
+            <!-- end container-fluid -->
+        </div>
+        <!-- end #header -->
+        <!-- begin #top-menu -->
+        <div id="top-menu" class="top-menu">
+            <!-- begin top-menu nav -->
+            <ul class="nav">
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-home"></i>
+                        <span>Administración</span>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Roles
+                            </a>
+                            <ul class="sub-menu">
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Usuarios
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Bancos
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Negocios
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Negocio")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Negocio")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Cuentas
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Cuenta")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Cuenta")">Ver</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Usuarios
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-group"></i>
+                        <span>Recursos Humanos</span>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Catalogos
+                            </a>
+                            <ul class="sub-menu">
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Usuarios
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Banco
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Negocios
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Negocio")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Negocio")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Cuentas
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Cuenta")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Cuenta")">Ver</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Empleados
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Incidencias
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Nomina
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-align-left"></i>
+                        <span>Transportadora</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Catalogos
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "CatMarcaVehiculos")">Marca Vehiculos</a></li>
+                                <li><a href="@Url.Action("Registrar", "catCombustible")">Combustible</a></li>
+                            </ul>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Registro
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Flotilla")">Registro de Flotilla</a></li>
+                                <li><a href="@Url.Action("Consulta", "Flotilla")">Consultar</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Control Vehicular
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "controlVehicular")">Control (Bitacora)</a></li>
+                                <li><a href="@Url.Action("Consulta", "controlVehicular")">Consultar</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Mantenimiento
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-calendar"></i>
+                        <span>Operadora</span>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Consulta de Agenda
+                            </a>
+                            <ul class="sub-menu">
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Usuarios
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Bancos
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Negocios
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Negocio")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Negocio")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Cuentas
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Cuenta")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Cuenta")">Ver</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Programación de Servicio
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Reportes
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-money"></i>
+                        <span>Ventas</span>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Registro de Ventas
+                            </a>
+                            <ul class="sub-menu">
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Ventas
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("Insertar", "Venta")">Registrar Venta</a></li>
+                                            @*<li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>*@
+                                        </ul>
+                                    </li>
+                                    @*<li class="has-sub">
+                                            <a href="javascript:;">
+                                                <b class="caret pull-right"></b>
+                                                Usuarios
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                                <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                            </ul>
+                                        </li>*@
+                                }
+                                @*<li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Bancos
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Negocios
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("Registrar", "Negocio")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Negocio")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Cuentas
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("Registrar", "Cuenta")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Cuenta")">Ver</a></li>
+                                        </ul>
+                                    </li>*@
+                            </ul>
+
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Catálogo de Tours
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Catálogos de Paquetes
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Consultas
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-calculator"></i>
+                        <span>Contabilidad</span>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Catalogos
+                            </a>
+                            <ul class="sub-menu">
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Usuarios
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Bancos
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Negocios
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Negocio")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Negocio")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Cuentas
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Cuenta")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Cuenta")">Ver</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Movimientos
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-book"></i>
+                        <span>Libro Diario</span>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Catalogos
+                            </a>
+                            <ul class="sub-menu">
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Agencias
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Operador
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Movimientos
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-hotel"></i>
+                        <span>Hotel</span>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Registro
+                            </a>
+                            <ul class="sub-menu">
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Agencias
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Operador
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Reservación
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Reportes
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-bank"></i>
+                        <span>Agencias</span>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Ventas
+                            </a>
+                            <ul class="sub-menu">
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Agencias
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Operador
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Tours
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Paquetes
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Consultas
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="menu-control menu-control-left">
+                    <a href="#" data-click="prev-menu"><i class="fa fa-angle-left"></i></a>
+                </li>
+                <li class="menu-control menu-control-right">
+                    <a href="#" data-click="next-menu"><i class="fa fa-angle-right"></i></a>
+                </li>
+            </ul>
+            <!-- end top-menu nav -->
+        </div>
+        <!-- end #top-menu -->
+        <!-- begin #content -->
+        <div id="content" class="content">
+            <div id="add-with-callbacks"></div>
+            <div id="mensajeGlobal"><div id="mensajeGlobalCerrar"><div onclick="cerrarMensajeGlobal();">x</div></div><div id="mensajeGlobalContenido"></div></div>
+            @if (@ViewBag.mensajeGlobal != null || @TempData["mensajeGlobal"] != null)
+            {
+                <script>mostrarMensajeGlobal('@Html.Raw(ViewBag.mensajeGlobal!=null ? ViewBag.mensajeGlobal : TempData["mensajeGlobal"])', '@(ViewBag.color!=null ? ViewBag.color : TempData["color"])');</script>
+            }
+            @RenderBody()
+            <!-- end #content -->
+            <!-- begin scroll to top btn -->
+            <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+            <!-- end scroll to top btn -->
+        </div>
+        <!-- end page container -->
+    </div>
+
+
+    <!-- ================== BEGIN BASE JS ================== -->
+
+    <script src="~/Content/template/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+    <script src="~/Content/template/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="assets/crossbrowserjs/html5shiv.js"></script>
+        <script src="assets/crossbrowserjs/respond.min.js"></script>
+        <script src="assets/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="~/Content/FechaHora/moment.min.js"></script>
+    <script src="~/Content/FechaHora/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Content/FechaHora/bootstrap-datetimepicker.es.js"></script>
+
+
+    <script src="~/Content/template/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/template/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <!-- ================== END BASE JS ================== -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="~/Content/template/assets/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="~/Content/template/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/template/assets/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <script src="~/Content/template/assets/plugins/masked-input/masked-input.min.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script src="~/Content/template/assets/plugins/password-indicator/js/password-indicator.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap-combobox/js/bootstrap-combobox.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.js"></script>
+    <script src="~/Content/template/assets/plugins/jquery-tag-it/js/tag-it.min.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap-daterangepicker/moment.js"></script>
+    <script src="~/Content/template/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/Content/template/assets/plugins/select2/dist/js/select2.min.js"></script>
+    @*<script src="~/Content/template/assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>*@
+    <script src="~/Content/template/assets/js/form-plugins.demo.min.js"></script>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="~/Content/template/assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Buttons/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Buttons/js/buttons.flash.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Buttons/js/jszip.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Buttons/js/pdfmake.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Buttons/js/vfs_fonts.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Buttons/js/buttons.print.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/AutoFill/js/dataTables.autoFill.min.js"></script>
+    <script src="~/Content/template/assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/template/assets/js/table-manage-buttons.demo.min.js"></script>
+    <!-- ================== ROBERTO INICIO ================== -->
+    <script src="~/Content/template/assets/plugins/bootstrap-wizard/js/bwizard.js"></script>
+    <script src="~/Content/template/assets/js/form-wizards.demo.min.js"></script>
+    <!-- ================== ROBERTO FIN ================== -->
+
+    <script src="~/Content/template/assets/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script src="~/Content/template/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/template/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+
+
+    <script src="~/Content/template/assets/js/ui-modal-notification.demo.min.js"></script>
+    <script src="~/Content/template/assets/js/ui-modal-notification.demo.js"></script>
+
+    <script src="~/Content/template/assets/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script src="~/Content/miCodigos/js/jsValidaciones.js"></script>
+    <script src="~/Content/miCodigos/js/jsAjax.js"></script>
+
+    <script src="~/Content/template/assets/plugins/switchery/switchery.min.js"></script>
+    <script src="~/Content/template/assets/plugins/powerange/powerange.min.js"></script>
+    <script src="~/Content/template/assets/js/form-slider-switcher.demo.min.js"></script>
+    <!-- ================== ROBERTO INICIO ================== -->
+    <script src="~/Content/miCodigos/js/jsAjax.js"></script>
+    <!-- ================== ROBERTO FIN ================== -->
+    <script>
+        $(document).ready(function () {
+            App.init();
+            FormPlugins.init();
+            FormWizard.init(); //roberto
+            Notification.init();
+            TableManageButtons.init();
+            FormSliderSwitcher.init();
+            $("#divMiCalendario").datetimepicker({
+                format: 'YYYY-MM-DD HH:mm'
+            });
+
+            $("#idTour").change(function () {
+                var precio = $(this).find(':selected').data('costo');
+                document.getElementById("costoVentat").value = precio;
+            });
+            // format: 'YYYY-MM-DD HH:mm'
+            $('#FechaVentat').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+            $('#FechaIniciot').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+            $('#FechaFinalt').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+            $('#FechaVentap').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+            $('#FechaIniciop').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+            $('#FechaFinalp').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+            $("#fechaIniciop").submit(function () {
+                alert("El nombre debe tener como mínimo 5 caracteres");
+                return false;
+                return false;
+            });
+
+            sumaFecha = function (d, fecha) {
+                var Fecha = new Date();
+                var sFecha = fecha || (Fecha.getDate() + "/" + (Fecha.getMonth() + 1) + "/" + Fecha.getFullYear());
+                var sep = sFecha.indexOf('/') != -1 ? '/' : '-';
+                var aFecha = sFecha.split(sep);
+                var fecha = aFecha[2] + '/' + aFecha[1] + '/' + aFecha[0];
+                fecha = new Date(fecha);
+                fecha.setDate(fecha.getDate() + parseInt(d));
+                var anno = fecha.getFullYear();
+                var mes = fecha.getMonth() + 1;
+                var dia = fecha.getDate();
+                mes = (mes < 10) ? ("0" + mes) : mes;
+                dia = (dia < 10) ? ("0" + dia) : dia;
+                var fechaFinal = dia + sep + mes + sep + anno;
+                return (fechaFinal);
+            }
+
+            var fx1 = document.getElementById('adultost');
+            var fx2 = document.getElementById('ninost');
+            pax = document.getElementById('paxt');
+            costoVendido = document.getElementById('costoVendidot');
+            total = document.getElementById('totalt');
+            anticipo = document.getElementById('anticipot');
+            saldo = document.getElementById('saldot');
+
+            fx2.addEventListener('input', function () {
+                var error = true;
+                try {
+                    if (fx1.value != null) {
+                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));
+                        total.value = eval(parseInt(pax.value) * parseInt(costoVendido.value))
+                        error = false;
+                    }
+                } catch (err) { }
+                if (error)
+                    pax.value = "Error";
+            });
+
+            costoVendido.addEventListener('input', function () {
+                var error = true;
+                try {
+                    if (fx1.value != null) {
+                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));
+                        total.value = eval(parseInt(pax.value) * parseInt(costoVendido.value))
+                        error = false;
+                    }
+                } catch (err) { }
+                if (error)
+                    pax.value = "Error";
+            });
+
+            anticipo.addEventListener('input', function () {
+                var error = true;
+                try {
+                    if (total.value != null) {
+                        saldo.value = eval(parseInt(total.value) - parseInt(anticipo.value));
+                        error = false;
+                    }
+                } catch (err) { }
+                if (error)
+                    pax.value = "Error";
+            });
+            //----------------------------------------------------------------------------------------------------------------
+            var paxe = 0;
+            var precio = 0;
+            var extra = 0;
+            $("#idPaquete").change(function () {
+                precio = $(this).find(':selected').data('costo');
+                document.getElementById("costoVentap").value = precio;
+                paxe = $(this).find(':selected').data('npax');
+                document.getElementById("nPaxp").value = paxe;
+                extra = $(this).find(':selected').data('extra');
+                document.getElementById("gastoExtrap").value = extra;
+
+                document.getElementById('adultosp').value = "";
+                document.getElementById('ninosp').value = "";
+                document.getElementById('totalExtrap').value = "";
+                document.getElementById('paxp').value = "";
+                document.getElementById('totalp').value = "";
+            });
+
+            var fx11 = document.getElementById('adultosp');
+            var fx22 = document.getElementById('ninosp');
+            paxp = document.getElementById('paxp');
+            costoVendidop = document.getElementById('costoVendidop');
+            totalp = document.getElementById('totalp');
+            anticipop = document.getElementById('anticipop');
+            saldop = document.getElementById('saldop');
+            totalExtrap = document.getElementById('totalExtrap');
+            fx22.addEventListener('input', function () {
+                var error = true;
+                try {
+                    if (fx11.value != null) {
+                        paxp.value = eval(parseInt(fx22.value) + parseInt(fx11.value) + parseInt(document.getElementById("nPaxp").value));
+                        totalExtrap.value = eval((parseInt(fx22.value) + parseInt(fx11.value)) * document.getElementById("gastoExtrap").value);
+                        totalp.value = eval(parseInt(totalExtrap.value) + parseInt(document.getElementById("costoVentap").value));
+                        error = false;
+                    }
+                } catch (err) { }
+                if (error)
+                    pax.value = "Error";
+            });
+
+            costoVendidop.addEventListener('input', function () {
+                var error = true;
+                try {
+                    document.getElementById("totalpF").value = document.getElementById('costoVendidop').value;
+                    error = false;
+                } catch (err) { }
+                if (error)
+                    document.getElementById("totalpF").value = "Error";
+            });
+
+            anticipop.addEventListener('input', function () {
+                var error = true;
+                try {
+                    if (totalp.value != null) {
+                        saldop.value = eval(parseInt(totalpF.value) - parseInt(anticipop.value));
+                        error = false;
+                    }
+                } catch (err) { }
+                if (error)
+                    anticipop.value = "Error";
+            });
+
+            Tbl_1.init();
+        });
+
+
+
+
+    </script>
+</body>
+</html>

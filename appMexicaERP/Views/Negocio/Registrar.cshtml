@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Registrar";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- begin col-6 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Registro de Negocio por Banco</h4>
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Registrar", "Negocio")" class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Estatus</label>
+                            <div class="col-md-2">
+                                <select name="selectEstatus" id="selectEstatus" class="form-control">
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
+                                <label class="control-label col-md-1">Banco</label>
+                                <div class="col-md-2">
+                                    <select name="selecIdBanco" id="selecIdBanco" class="form-control">
+                                        <option value=""></option>
+                                        @foreach (var item in ViewBag.listaBancos)
+                                        {
+                                            if (@item.estatus == true)
+                                            {
+                                                <option value="@item.idBanco">@item.nombre</option>
+                                            }
+
+                                        }
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1">Negocio</label>
+                                <div class="col-md-3">
+                                    <input type="text" id="txtNegocio" name="txtNegocio" class="form-control" />
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12" style="text-align:right;">
+                                <button type="button" class="btn btn-sm btn-primary m-r-5 fa fa-save" onclick="registrarNegocio();"> Registrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+    </div>
+</div>
+
+<script>
+    function registrarNegocio()
+    {
+        paginaAjax('add-with-callbacks',
+            {
+                selecIdBanco: document.getElementById('selecIdBanco').value,
+                txtNegocio: document.getElementById('txtNegocio').value,
+                selectEstatus: document.getElementById('selectEstatus').value
+            },
+
+            '@Url.Action("Registrar", "Negocio")', 'POST', null, null, false, true);
+
+        $("#txtNegocio").val("");
+    }
+
+</script>
+
