@@ -1,0 +1,39 @@
+﻿#mensajeGlobal
+{
+    border-radius: 5px;
+    color: #ffffff;
+    display: none;
+    min-height: 30px;
+    padding: 10px;
+    position: fixed;
+    right: 5px;
+    top: 10px;
+    width: 280px;
+    z-index: 10000;
+}
+
+#mensajeGlobal > #mensajeGlobalCerrar
+{
+    background-color: #348FE2;
+    cursor: pointer;
+    display: inline-table;
+    height: 15px;
+    position: absolute;
+    right: 7px;
+    top: 0px;
+    width: 15px;
+}
+
+#mensajeGlobal > #mensajeGlobalCerrar:hover > div
+{
+    text-decoration: underline;
+}
+
+#mensajeGlobal > #mensajeGlobalCerrar > div
+{
+    color: #ffffff;
+    display: table-cell;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
