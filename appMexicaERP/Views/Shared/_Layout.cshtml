@@ -176,6 +176,7 @@
         </div>
         <!-- end #header -->
         <!-- begin #top-menu -->
+        <!-- begin #top-menu -->
         <div id="top-menu" class="top-menu">
             <!-- begin top-menu nav -->
             <ul class="nav">
@@ -184,6 +185,7 @@
                         <b class="caret pull-right"></b>
                         <i class="fa fa-home"></i>
                         <span>Administración</span>
+
                     </a>
                     <ul class="sub-menu">
                         <li class="has-sub">
@@ -194,16 +196,16 @@
                             <ul class="sub-menu">
                                 @if (@HttpContext.Current.Session["rol"].ToString() == "2")
                                 {
-                                <li class="has-sub">
-                                    <a href="javascript:;">
-                                        <b class="caret pull-right"></b>
-                                        Usuarios
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
-                                        <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
-                                    </ul>
-                                </li>
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Usuarios
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
                                 }
                                 <li class="has-sub">
                                     <a href="javascript:;">
@@ -251,60 +253,99 @@
 
                     </ul>
                 </li>
-            </ul>
-            <ul class="nav">
                 <li class="has-sub">
                     <a href="javascript:;">
                         <b class="caret pull-right"></b>
                         <i class="fa fa-group"></i>
                         <span>Recursos Humanos</span>
+
                     </a>
                     <ul class="sub-menu">
                         <li class="has-sub">
                             <a href="javascript:;">
                                 <b class="caret pull-right"></b>
-                                <i class="fa fa-align-left"></i>
-                                <span>Catalogos</span>
+                                Catalogos
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="@Url.Action("Registrar", "Puesto")">Puestos</a></li>
-                                <li><a href="@Url.Action("Registrar", "TipoEmpleado")">Tipo de Empleados</a></li>
-                                <li><a href="@Url.Action("Registrar", "TipoIdentificacion")">Tipo de Indentificacion</a></li>
+                                @if (@HttpContext.Current.Session["rol"].ToString() == "2")
+                                {
+                                    <li class="has-sub">
+                                        <a href="javascript:;">
+                                            <b class="caret pull-right"></b>
+                                            Usuarios
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="@Url.Action("CrearCuentaUsuario", "Usuario")">Registrar</a></li>
+                                            <li><a href="@Url.Action("Ver", "Usuario")">Ver</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Banco
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Banco")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Banco")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Negocios
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Negocio")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Negocio")">Ver</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:;">
+                                        <b class="caret pull-right"></b>
+                                        Cuentas
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Registrar", "Cuenta")">Registrar</a></li>
+                                        <li><a href="@Url.Action("Ver", "Cuenta")">Ver</a></li>
+                                    </ul>
+                                </li>
                             </ul>
-                    </ul>
 
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret pull-right"></b>
-                        Empleados
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="@Url.Action("Registrar", "Empleado")">Registrar</a></li>
-                        <li><a href="@Url.Action("Consulta", "Empleado")">ver</a></li>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Empleados
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Incidencias
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                Nomina
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret pull-right"></b>
-                        Incidencias
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
-                        <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret pull-right"></b>
-                        Nomina
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
-                        <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav">
                 <li class="has-sub">
                     <a href="javascript:;">
                         <b class="caret pull-right"></b>
@@ -318,13 +359,13 @@
                                 Catalogos
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="@Url.Action("Registrar", "Marca")">Marca Vehiculos</a></li>
-                                <li><a href="@Url.Action("Registrar", "Combustible")">Combustible</a></li>
+                                <li><a href="@Url.Action("Registrar", "CatMarcaVehiculos")">Marca Vehiculos</a></li>
+                                <li><a href="@Url.Action("Registrar", "catCombustible")">Combustible</a></li>
                             </ul>
                         <li class="has-sub">
                             <a href="javascript:;">
                                 <b class="caret pull-right"></b>
-                                Registro Vehicular
+                                Registro
                             </a>
                             <ul class="sub-menu">
                                 <li><a href="@Url.Action("Registrar", "Flotilla")">Registro de Flotilla</a></li>
@@ -807,6 +848,7 @@
             </ul>
             <!-- end top-menu nav -->
         </div>
+        <!-- end #top-menu -->
         <!-- end #top-menu -->
         <!-- begin #content -->
         <div id="content" class="content">
