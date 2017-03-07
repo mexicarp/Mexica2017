@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Registrar";
 }
 <div class="container">
@@ -48,9 +47,9 @@
                                 <label for="exampleInputEmail1" style="font:bold;">Tipo Empleado</label>
                                 <select class="form-control" id="selectidTipoEmpleado" name="selectidTipoEmpleado">
                                     <option value="0">-</option>
-                                    @foreach (var item in ViewBag.listaTipoEmp)
+                                    @foreach (var item in ViewBag.listaPuestos)
                                     {
-                                        <option value="@item.idTipoEmpleado">@item.descripcion</option>
+                                        <option value="@item.idPuesto">@item.descripcion</option>
                                     }
                                 </select>
                             </div>

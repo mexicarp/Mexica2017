@@ -22,13 +22,11 @@ namespace appMexicaERP.Models
         public int cp { get; set; }
         public string colonia { get; set; }
         public string municipio { get; set; }
-        public string estado { get; set; }
+        public int idCiudad { get; set; }
         public string telefono { get; set; }
         public string email { get; set; }
         public string rfc { get; set; }
-        public long IdEmpleado { get; set; }
         public DateTime fechaModificacion { get; set; }
-        public string cve_user { get; set; }
         public int estatus { get; set; }
 
         #region Parent

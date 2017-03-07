@@ -127,7 +127,7 @@ namespace appMexicaERP.Controllers
                 Puesto.costo = double.Parse(formCollection["txtcosto"]);
             }
             dbCtx.SaveChanges();
-            return RedirectToAction("Consulta", "Puesto");
+            return RedirectToAction("Registrar", "Puesto");
         }
     }
 }

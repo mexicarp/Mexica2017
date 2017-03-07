@@ -1,65 +1,161 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Registrar";
 }
-
 <div class="container">
-    <h2>Registro</h2>
     <div class="row">
         <div class="col-md-12">
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">Registro de Categorias</h4>
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="@Url.Action("Consulta", "Puesto")" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-repeat"></i></a>
+                    </div>
+                    <h4 class="panel-title">Registro de puestos de Empleados</h4>
                 </div>
                 <div class="alert alert-warning fade in">
                     <button type="button" class="close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
+                        @*<span aria-hidden="true">&times;</span>*@
                     </button>
-                    Catalogo de Categorias de los puestos o areas del personal de Mexica Tours
+                    Registro de categorias o puestos del corporativo Mexica Tours, este catalogo se utiliza en el modulo de alta a empleados.
                 </div>
                 <div class="panel-body">
-                    <form action="@Url.Action("Registrar", "Puesto")" class="form-horizontal" method="post">
-                        <div class="form-group">
-                            <label class="col-md-1 control-label" align="left">Categoria</label>
+                    <form action="@Url.Action("Registrar", "Puesto")" id="frmCaptura1" class="form-inline" method="post">
+                        <input type="hidden" id="txtidPuesto" name="txtidPuesto" value="" class="form-control" placeholder="" />
+                        <div style="width:100%; height:20px; background-color:#00ACAC; border-radius:3px;">
+                            <h5 style="color:white; vertical-align:middle; position:absolute; margin-top:3px;">Datos de la Categoria</h5>
+                        </div>
+                        <br />
+                        <div class="row">
                             <div class="col-md-2">
+                                <label for="exampleInputEmail1">Categoria</label>
                                 <input type="text" onKeyUp="this.value=this.value.toUpperCase();" id="txtcategoria" name="txtcategoria" class="form-control" placeholder="Clave de categoria" required />
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-1 control-label" align="left">Descripcion</label>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Descripcion</label>
                                 <input type="text" id="txtdescripcion" name="txtdescripcion" class="form-control" placeholder="Nombre de la categoria" required />
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-1 control-label" align="left">Funciones del Puesto</label>
-                            <div class="col-md-9">
-                                <textarea class="form-control" id="txtalcancePuesto" name="txtalcancePuesto" placeholder="Descripcion del categoria, funciones,alcances,etc" rows="5" required></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-1 control-label">Horas Laborables</label>
                             <div class="col-md-2">
-                                <input type="text" id="txthoras" name="txthoras" class="form-control" placeholder="Horas" required />
+                                <label for="exampleInputEmail1">Funciones del Puesto</label>
+                                <input type="text" class="form-control" id="txtalcancePuesto" name="txtalcancePuesto" placeholder="Descripcion del puesto" required />
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-1 control-label">Costo</label>
                             <div class="col-md-2">
-                                <input type="text" id="txtcosto" name="txtcosto" class="form-control" placeholder="Costo de categoria" required />
+                                <label for="exampleInputEmail1">Horas</label>
+                                <input type="text" id="txthoras" name="txthoras" class="form-control" placeholder="0" required />
                             </div>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <div class="col-md-12" align="center">
-                                <button style="width:10%;" type="submit" class="btn btn-sm btn-success">Insertar</button>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Costo</label>
+                                <input type="text" id="txtcosto" name="txtcosto" class="form-control" placeholder="0.00" required />
+                            </div>
+                            <br />
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-sm btn-success">Insertar</button>
                             </div>
                         </div>
                     </form>
+
+                    <form action="@Url.Action("Modificar", "Puesto")" id="frmCaptura2" style="display:none;" class="form-inline" method="post">
+                        <input type="hidden" id="txtidPuesto1" name="txtidPuesto" value="" class="form-control" placeholder="" />
+                        <div style="width:100%; height:20px; background-color:#00ACAC; border-radius:3px;">
+                            <h5 style="color:white; vertical-align:middle; position:absolute; margin-top:3px;">Datos de la Categoria</h5>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Categoria</label>
+                                <input type="text" onKeyUp="this.value=this.value.toUpperCase();" id="txtcategoria1" name="txtcategoria" class="form-control" placeholder="Clave de categoria" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Descripcion</label>
+                                <input type="text" id="txtdescripcion1" name="txtdescripcion" class="form-control" placeholder="Nombre de la categoria" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Funciones del Puesto</label>
+                                <input type="text" class="form-control" id="txtalcancePuesto1" name="txtalcancePuesto" placeholder="Descripcion del puesto" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Horas</label>
+                                <input type="text" id="txthoras1" name="txthoras" class="form-control" placeholder="0" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Costo</label>
+                                <input type="text" id="txtcosto1" name="txtcosto" class="form-control" placeholder="0.00" required />
+                            </div>
+                            <br />
+                        </div>
+                        <div style="display:inline-table;">
+                            <button type="button" class="btn btn-sm btn-primary fa fa-pencil" onclick="GuardaCambios();"> Modificar</button>
+
+                            <button type="button" class="btn btn-sm btn-danger fa fa-warning" onclick="btnCancelarModificar();"> Cancelar</button>
+                        </div>
+                    </form>
+                    <br /><br />
+                    <div>
+                        <table id="data-table" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Categoria</th>
+                                    <th>Descripción</th>
+                                    <th>Alcance</th>
+                                    <th>Horas</th>
+                                    <th>Costo</th>
+                                    <th>Acción</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.listaPuestos)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td style="height:10px;"><a href="#" onclick="modificar('@item.idPuesto')">@item.idPuesto</a></td>
+                                        <td>@item.categoria</td>
+                                        <td>@item.descripcion</td>
+                                        <td>@item.alcancePuesto</td>
+                                        <td>@item.horas</td>
+                                        <td>@item.costo</td>
+                                      
+                                        <td>
+                                            <a class="btn btn-primary btn-icon btn-circle" data-click="Modificar" href="#" onclick="MarcaModificar('@item.idPuesto','@item.categoria','@item.descripcion','@item.alcancePuesto','@item.horas','@item.costo');"><i class="fa fa-pencil"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
             </div>
-            <!-- end panel -->
         </div>
+        <!-- end panel -->
     </div>
 </div>
+<script>
+    function MarcaModificar(idPuesto, categoria, descripcion, alcancePuesto, horas, costo) {
+        $("#txtidPuesto1").val(idPuesto);
+        $("#txtcategoria1").val(categoria);
+        $("#txtdescripcion1").val(descripcion);
+        $("#txtalcancePuesto1").val(alcancePuesto);
+        $("#txthoras1").val(horas);
+        $("#txtcosto1").val(costo);
+        
+       
 
+        $("#frmCaptura2").show();
+        $("#frmCaptura1").hide();
+    }
+
+    function btnCancelarModificar() {
+        $("#frmCaptura2").hide();
+        $("#frmCaptura1").show();
+    }
+
+    function GuardaCambios() {
+
+        $("#frmCaptura2").serialize();
+
+        $("#frmCaptura2").submit();
+
+
+    }
+</script>

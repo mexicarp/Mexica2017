@@ -40,13 +40,11 @@ namespace appMexicaERP.Controllers
                 Empresas.cp = int.Parse(formCollection["txtIdEmpresa"]);
                 Empresas.colonia = formCollection["txtIdEmpresa"];
                 Empresas.municipio = formCollection["txtIdEmpresa"];
-                Empresas.estado = formCollection["txtIdEmpresa"];
+                Empresas.idCiudad = int.Parse(formCollection["selectIdCiudad"]);
                 Empresas.telefono = formCollection["txtIdEmpresa"];
                 Empresas.email = formCollection["txtIdEmpresa"];
                 Empresas.rfc = formCollection["txtdescripcion"];
-                Empresas.IdEmpleado = long.Parse(formCollection["txtdescripcion"]);
                 Empresas.fechaModificacion = DateTime.Parse(formCollection["txtdescripcion"]);
-                Empresas.cve_user = formCollection["txtdescripcion"];
                 Empresas.estatus = 1;
 
                 dbCtx.empresas.Add(Empresas);
@@ -104,7 +102,6 @@ namespace appMexicaERP.Controllers
 
             TEmpresa Empresas = dbCtx.empresas.Find(int.Parse(formCollection["txtIdEmpresa"]));
 
-            Empresas.idEmpresa = int.Parse(formCollection["txtIdEmpresa"]);
             Empresas.idTipoEmpresa = int.Parse(formCollection["txtidTipoEmpresa"]);
             Empresas.fechaCreacion = DateTime.Parse(formCollection["txtfechaCreacion"]);
             Empresas.descripcion = formCollection["txtIdEmpresa"];
@@ -113,13 +110,11 @@ namespace appMexicaERP.Controllers
             Empresas.cp = int.Parse(formCollection["txtIdEmpresa"]);
             Empresas.colonia = formCollection["txtIdEmpresa"];
             Empresas.municipio = formCollection["txtIdEmpresa"];
-            Empresas.estado = formCollection["txtIdEmpresa"];
+            Empresas.idCiudad = int.Parse(formCollection["selectIdCiudad"]);
             Empresas.telefono = formCollection["txtIdEmpresa"];
             Empresas.email = formCollection["txtIdEmpresa"];
             Empresas.rfc = formCollection["txtdescripcion"];
-            Empresas.IdEmpleado = long.Parse(formCollection["txtdescripcion"]);
-            Empresas.fechaModificacion = DateTime.Parse(formCollection["txtdescripcion"]);
-            Empresas.cve_user = formCollection["txtdescripcion"];
+            Empresas.fechaModificacion = DateTime.Now;
             dbCtx.SaveChanges();
 
             return RedirectToAction("Consulta", "Empresa");
