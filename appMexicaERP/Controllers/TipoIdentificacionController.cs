@@ -15,7 +15,7 @@ namespace appMexicaERP.Controllers
         public ActionResult Registrar()
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaIden = dbCtx.tipoidentificaciones.OrderByDescending(x => x.idIdentificacion);
+            ViewBag.listaIden = dbCtx.tipoidentificaciones.OrderByDescending(x => x.idIdentificacion).ToList();
             return View();
         }
         [HttpPost]
