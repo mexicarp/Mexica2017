@@ -14,6 +14,12 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Insertar()
         {
+
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
             ViewBag.listaTour = DbContext.Tours.OrderBy(x => x.id_tour);
@@ -27,10 +33,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Registro()
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
-
-
-
             return View();
         }
 
