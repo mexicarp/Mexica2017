@@ -82,7 +82,7 @@ namespace appMexicaERP.Controllers
         public ActionResult Consulta()
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa);
+            ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa).ToList();
 
             return View();
         }
@@ -90,7 +90,7 @@ namespace appMexicaERP.Controllers
         public ActionResult Modificar(int id)
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa);
+            ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa).ToList();
 
             ViewBag.modificarEmpresa = dbCtx.empresas.Find(id);
             return View();

@@ -17,15 +17,15 @@ namespace appMexicaERP.Controllers
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaFlotilla = dbCtx.flotillas.OrderByDescending(x => x.idFlotilla);
+            ViewBag.listaFlotilla = dbCtx.flotillas.OrderByDescending(x => x.idFlotilla).ToList();
 
-            ViewBag.listaMarcas = dbCtx.marcavehiculos.OrderByDescending(x => x.idMarca);
+            ViewBag.listaMarcas = dbCtx.marcavehiculos.OrderByDescending(x => x.idMarca).ToList();
 
-            ViewBag.listaCombustible = dbCtx.combustibles.OrderByDescending(x => x.idCombustible);
+            ViewBag.listaCombustible = dbCtx.combustibles.OrderByDescending(x => x.idCombustible).ToList();
 
-            ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa);
+            ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa).ToList();
 
-            ViewBag.listaEmpleados = dbCtx.empleados.OrderByDescending(x => x.idEmpleado);
+            ViewBag.listaEmpleados = dbCtx.empleados.OrderByDescending(x => x.idEmpleado).ToList();
 
             return View();
         }
@@ -111,7 +111,7 @@ namespace appMexicaERP.Controllers
             ViewBag.listaFlotilla = dbCtx.flotillas.OrderByDescending(x => x.idFlotilla).ToList();
             ViewBag.listaEmpleados = dbCtx.empleados.OrderByDescending(x => x.idEmpleado).ToList();
             ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa).ToList();
-            ViewBag.listaMarcas = dbCtx.marcavehiculos.OrderByDescending(x => x.idMarca);
+            ViewBag.listaMarcas = dbCtx.marcavehiculos.OrderByDescending(x => x.idMarca).ToList(); ;
             ViewBag.listaCombustibles = dbCtx.combustibles.OrderByDescending(x => x.idCombustible).ToList();
 
             ViewBag.modificarFlotilla = dbCtx.flotillas.Find(id);

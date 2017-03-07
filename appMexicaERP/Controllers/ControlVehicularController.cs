@@ -17,7 +17,7 @@ namespace appMexicaERP.Controllers
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaControlVehicular = dbCtx.ctrolvehiculares.OrderByDescending(x1 => x1.idControl);
+            ViewBag.listaControlVehicular = dbCtx.ctrolvehiculares.OrderByDescending(x1 => x1.idControl).ToList();
 
             //ViewBag.listaFlotilla = dbCtx.flotillas.OrderByDescending(x => x.idFlotilla);
             return View();
@@ -126,7 +126,7 @@ namespace appMexicaERP.Controllers
         public ActionResult Consulta()
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaControlVehicular = dbCtx.ctrolvehiculares.OrderByDescending(x => x.idControl);
+            ViewBag.listaControlVehicular = dbCtx.ctrolvehiculares.OrderByDescending(x => x.idControl).ToList();
             return View();
         }
 

@@ -16,7 +16,7 @@ namespace appMexicaERP.Controllers
         public ActionResult Registrar()
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaPuestos = dbCtx.puestos.OrderByDescending(x => x.idPuesto);
+            ViewBag.listaPuestos = dbCtx.puestos.OrderByDescending(x => x.idPuesto).ToList();
             return View();
         }
         [HttpPost]
@@ -87,14 +87,14 @@ namespace appMexicaERP.Controllers
         public ActionResult Consulta()
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaPuestos = dbCtx.puestos.OrderByDescending(x => x.idPuesto);
+            ViewBag.listaPuestos = dbCtx.puestos.OrderByDescending(x => x.idPuesto).ToList();
             return View();
         }
         [HttpGet]
         public ActionResult Modificar(int id)
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaPuestos = dbCtx.puestos.OrderByDescending(x => x.idPuesto);
+            ViewBag.listaPuestos = dbCtx.puestos.OrderByDescending(x => x.idPuesto).ToList();
 
             ViewBag.modificarPuesto = dbCtx.puestos.Find(id);
             return View();

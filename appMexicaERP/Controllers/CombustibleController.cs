@@ -70,14 +70,14 @@ namespace appMexicaERP.Controllers
         public ActionResult Consulta()
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaCombustible = dbCtx.combustibles.OrderByDescending(x => x.idCombustible);
+            ViewBag.listaCombustible = dbCtx.combustibles.OrderByDescending(x => x.idCombustible).ToList();
             return View();
         }
         [HttpGet]
         public ActionResult Modificar(int id)
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaCombustible = dbCtx.combustibles.OrderByDescending(x => x.idCombustible);
+            ViewBag.listaCombustible = dbCtx.combustibles.OrderByDescending(x => x.idCombustible).ToList();
 
             ViewBag.modificarCombustible = dbCtx.combustibles.Find(id);
             return View();

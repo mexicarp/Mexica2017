@@ -17,7 +17,7 @@ namespace appMexicaERP.Controllers
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaEmpleados = dbCtx.empleados.OrderByDescending(x => x.idEmpleado);
+            ViewBag.listaEmpleados = dbCtx.empleados.OrderByDescending(x => x.idEmpleado).ToList();
 
             ViewBag.listaCiudades = dbCtx.ciudades.OrderByDescending(x => x.idCiudad).ToList();
 
@@ -109,7 +109,7 @@ namespace appMexicaERP.Controllers
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaEmpleados = dbCtx.empleados.Include(x1 => x1.parentcatEmpresas).OrderBy(x => x.idEmpleado);
+            ViewBag.listaEmpleados = dbCtx.empleados.Include(x1 => x1.parentcatEmpresas).OrderBy(x => x.idEmpleado).ToList();
 
             return View();
         }
@@ -117,7 +117,7 @@ namespace appMexicaERP.Controllers
         public ActionResult Modificar(int id)
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-            ViewBag.listaEmpleados = dbCtx.empleados.OrderByDescending(x => x.idEmpleado);
+            ViewBag.listaEmpleados = dbCtx.empleados.OrderByDescending(x => x.idEmpleado).ToList(); ;
             ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa).ToList();
             ViewBag.listaCiudades = dbCtx.ciudades.OrderByDescending(x => x.idCiudad).ToList();
             ViewBag.listaIden = dbCtx.tipoidentificaciones.OrderByDescending(x => x.idIdentificacion).ToList();
