@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace appMexicaERP.Controllers
 {
-    public class TipoIndentificacionController : Controller
+    public class TipoIdentificacionController : Controller
     {
         [HttpGet]
         public ActionResult Registrar()
@@ -35,7 +35,7 @@ namespace appMexicaERP.Controllers
 
                 dbCtx.SaveChanges();
 
-                return RedirectToAction("Consulta", "TipoIndentificacion");
+                return RedirectToAction("Registrar", "TipoIdentificacion");
 
 
             }
@@ -85,11 +85,11 @@ namespace appMexicaERP.Controllers
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
             TTipoIdentificacion Identifica = dbCtx.tipoidentificaciones.Find(int.Parse(formCollection["txtidIdentificacion"]));
-
             Identifica.descripcion = formCollection["txtdescripcion"];
+            Identifica.estatus = int.Parse(formCollection["selectestatus"]);
             dbCtx.SaveChanges();
 
-            return RedirectToAction("Consulta", "TipoIndentificacion");
+            return RedirectToAction("Registrar", "TipoIdentificacion");
         }
     }
 }

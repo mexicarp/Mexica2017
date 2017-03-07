@@ -21,13 +21,11 @@ namespace appMexicaERP.DAL
         public DbSet<TMovimiento> Movimientos { get; set; }
         public DbSet<TNegocio> Negocios { get; set; }
         public DbSet<TConcepto> Conceptos { get; set; }
-
         public DbSet<TVenta> Ventas { get; set; }
         public DbSet<TTour> Tours { get; set; }
         public DbSet<TFormaPago> FormaPagos { get; set; }
         public DbSet<TPaquete> Paquetes { get; set; }
         public DbSet<TPaqueteDetalle> PaqueteDetalles { get; set; }
-
         public DbSet<TFlotilla> flotillas { get; set; }
         public DbSet<TPuesto> puestos { get; set; }
         public DbSet<TEmpleado> empleados { get; set; }
