@@ -5281,7 +5281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\miCodigos\img\" />
     <Folder Include="Content\template\assets\plugins\bootstrap-eonasdan-datetimepicker\test\screen-capture\out\" />
     <Folder Include="Content\template\assets\plugins\bootstrap-eonasdan-datetimepicker\test\screen-capture\pic\" />
     <Folder Include="Content\template\assets\plugins\DataTables\extensions\FixedColumns\examples\integration\" />
