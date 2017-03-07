@@ -49,6 +49,11 @@ namespace appMexicaERP.Models
         public DateTime fechaCancelacion { get; set; }//Campos de la tabla
         public string motivoCancelacion { get; set; }//Campos de la tabla
         public int estatus { get; set; }//Campos de la tabla
+        public string nombreusu { get; set; }//Campos de la tabla
+        public Double costoaxkan { get; set; }//Campos de la tabla
+        public Double costoagencia { get; set; }//Campos de la tabla
+        public Double ventanino { get; set; }//Campos de la tabla
+        public Double ventaadulto { get; set; }//Campos de la tabla
         #endregion
 
     }

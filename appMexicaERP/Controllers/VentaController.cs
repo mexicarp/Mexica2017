@@ -16,10 +16,20 @@ namespace appMexicaERP.Controllers
         {
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaTour = DbContext.Tours.OrderBy(x => x.idTour);
+            ViewBag.listaTour = DbContext.Tours.OrderBy(x => x.id_tour);
             ViewBag.listaFormaPago = DbContext.FormaPagos.OrderBy(x => x.idFormaPago);
             ViewBag.listaPaquete = DbContext.Paquetes.OrderBy(x => x.idPaquete);
             ViewBag.listaPaqueteTour = DbContext.PaqueteDetalles.Include(i1 => i1.parenTour).Where(w1 => w1.idPaquete == 0).ToList();
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Registro()
+        {
+            DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
+
+
 
             return View();
         }
@@ -57,11 +67,10 @@ namespace appMexicaERP.Controllers
             else
             {
                 Venta.idPaquete = 0;
-            }
-
+            }            
             Venta.tipo_costo = "MEXICA";//formCollection["tipo_costot"];
-            Venta.costoVenta = double.Parse(formCollection["costoVentat"]);
-            Venta.costoVendido = double.Parse(formCollection["costoVendidot"]);
+            Venta.costoVenta = 13.3;//double.Parse(formCollection["costoVentat"]);
+            Venta.costoVendido = double.Parse(formCollection["ttpagar"]);
             Venta.adultos = int.Parse(formCollection["adultost"]);
             Venta.ninos = int.Parse(formCollection["ninost"]);
             Venta.pax = int.Parse(formCollection["paxt"]);
@@ -83,8 +92,13 @@ namespace appMexicaERP.Controllers
             Venta.referencia = formCollection["referenciat"];
             Venta.fechaModificacion = DateTime.Now;//DateTime.Parse(formCollection["fechaVentat"]);
             Venta.fechaCancelacion = DateTime.Now;//DateTime.Parse(formCollection["fechaVentat"]);
-            Venta.motivoCancelacion = "CENCELACION";// formCollection["motivoCancelaciont"];
+            Venta.motivoCancelacion = "NoDatos";// formCollection["motivoCancelaciont"];
             Venta.estatus = 1;
+            Venta.nombreusu = (HttpContext.Application["Usuario"]).ToString();
+            Venta.costoaxkan = double.Parse(formCollection["costoVentaax"]);
+            Venta.costoagencia = double.Parse(formCollection["costoVentaag"]);
+            Venta.ventanino = double.Parse(formCollection["costonino"]);
+            Venta.ventaadulto = double.Parse(formCollection["costoAdulto"]);
             DbContext.Ventas.Add(Venta);
             DbContext.SaveChanges();
             return RedirectToAction("Insertar", "Venta");

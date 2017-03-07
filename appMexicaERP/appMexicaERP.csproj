@@ -5271,6 +5271,7 @@
     <Content Include="Views\Concepto\Insertar.cshtml" />
     <Content Include="Views\Concepto\Ver.cshtml" />
     <Content Include="Views\Flotilla\Modificar.cshtml" />
+    <Content Include="Views\Venta\Registro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

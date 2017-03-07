@@ -961,8 +961,10 @@
             });
 
             $("#idTour").change(function () {
-                var precio = $(this).find(':selected').data('costo');
-                document.getElementById("costoVentat").value = precio;
+                var precioax = $(this).find(':selected').data('costoax');
+                var precioag = $(this).find(':selected').data('costoag');
+                document.getElementById("costoVentaax").value = precioax;
+                document.getElementById("costoVentaag").value = precioag;
             });
             // format: 'YYYY-MM-DD HH:mm'
             $('#FechaVentat').datetimepicker({
@@ -1017,18 +1019,24 @@
 
             var fx1 = document.getElementById('adultost');
             var fx2 = document.getElementById('ninost');
-            pax = document.getElementById('paxt');
-            costoVendido = document.getElementById('costoVendidot');
-            total = document.getElementById('totalt');
-            anticipo = document.getElementById('anticipot');
-            saldo = document.getElementById('saldot');
+            var pax = document.getElementById('paxt');
+            fx1.addEventListener('input', function () {
+                var error = true;
+                try {
+                    if (fx2.value != null) {
+                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));                       
+                        error = false;
+                    }
+                } catch (err) { }
+                if (error)
+                    pax.value = "Error";
+            });
 
             fx2.addEventListener('input', function () {
                 var error = true;
                 try {
                     if (fx1.value != null) {
-                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));
-                        total.value = eval(parseInt(pax.value) * parseInt(costoVendido.value))
+                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));                       
                         error = false;
                     }
                 } catch (err) { }
@@ -1036,18 +1044,62 @@
                     pax.value = "Error";
             });
 
-            costoVendido.addEventListener('input', function () {
+            var fx3 = document.getElementById('costoAdulto');
+            var fx4 = document.getElementById('costonino');
+            var ttpagar = document.getElementById('ttpagar');
+            var totalt = document.getElementById('totalt');
+
+            var tt1=0;
+            var tt2=0;
+
+            fx3.addEventListener('input', function () {
                 var error = true;
                 try {
                     if (fx1.value != null) {
-                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));
-                        total.value = eval(parseInt(pax.value) * parseInt(costoVendido.value))
+                        tt1 = eval(parseInt(fx1.value) * parseInt(fx3.value));
+                        ttpagar.value = tt1 + tt2;
+                        totalt.value = ttpagar.value;
                         error = false;
                     }
                 } catch (err) { }
                 if (error)
-                    pax.value = "Error";
+                    ttpagar.value = "Error";
             });
+
+            fx4.addEventListener('input', function () {
+                var error = true;
+                try {
+                    if (fx2.value != null) {
+                        tt2 = eval(parseInt(fx2.value) * parseInt(fx4.value));
+                        ttpagar.value = tt1 + tt2;
+                        totalt.value = ttpagar.value;
+                        error = false;
+                    }
+                } catch (err) { }
+                if (error)
+                    ttpagar.value = "Error";
+            });
+
+            //costoVendido = document.getElementById('costoVendidot');
+            total = document.getElementById('totalt');
+            anticipo = document.getElementById('anticipot');
+            saldo = document.getElementById('saldot');
+
+
+            
+
+            //costoVendido.addEventListener('input', function () {
+            //    var error = true;
+            //    try {
+            //        if (fx1.value != null) {
+            //            pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));
+            //            total.value = eval(parseInt(pax.value) * parseInt(costoVendido.value))
+            //            error = false;
+            //        }
+            //    } catch (err) { }
+            //    if (error)
+            //        pax.value = "Error";
+            //});
 
             anticipo.addEventListener('input', function () {
                 var error = true;

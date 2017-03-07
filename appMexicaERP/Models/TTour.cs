@@ -7,17 +7,17 @@ using System.Web;
 
 namespace appMexicaERP.Models
 {
-    [Table("tours")]
+    [Table("cat_tours")]
     public class TTour
     {
         #region propieties
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)] //Identity  PARA CUANDO SE UTILIZA EL AUTO_INCREMENT Y CUANDO NO NONE
-        public int idTour { get; set; }//Campos de la tabla
+        public int id_tour { get; set; }//Campos de la tabla
         //[Column("cmp_Producto")] PARA PODER CAMBIAR DE NOMBRE
-        public int idCategoriaTour { get; set; }
-        public int tipo { get; set; }
+        public int id_categoria_tour { get; set; }        
         public string tour { get; set; }
-        public string costoMexica { get; set; }
+        public string costo_axkan { get; set; }
+        public string costo_agencia { get; set; }
         #endregion
 
         //Relaciones de tablas

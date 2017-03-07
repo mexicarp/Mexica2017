@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Insertar";
+    ViewBag.Title = "Registro";
 }
 
-<!-- begin #content -->
 <div id="content" class="content" style="margin-top:-30px !important;">
     <!-- begin row -->
     <div class="row">
@@ -16,16 +15,16 @@
                     <div id="wizard">
                         <ol>
                             <li>
-                                VENTA TOUR
-                                <small>Ventas  Tour a  Realizar...</small>
+                                REGISTRO TOUR
+                                <small>Catalogos de Tours</small>
                             </li>
                             <li>
-                                VENTA PAQUETE
-                                <small>Ventas  Paquete a  Realizar...</small>
+                               Registro Agencias
+                                <small>Catalogos Agencias</small>
                             </li>
                             <li>
-                                CANCELACION DE VENTA
-                                <small>Cancela venta(Tour o Pquete)</small>
+                               Registro Precio
+                                <small>Catalogos Precios</small>
                             </li>
                         </ol>
                         <!-- begin wizard step-1 -->
@@ -37,119 +36,61 @@
                                     <div class="row">
                                         <!-- begin col-4 -->
                                         <div class="form-group">
+                                            
 
-                                            <div class="col-md-1">
-                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Categoria Tours</label>
+                                                <select class="form-control input-sm" id="idCategoriaTourr" name="idCategoriaTourr">
+                                                    <option value="-1" disabled="" selected=""></option>
+                                                    @*@foreach (var item in ViewBag.listaTour)
+                                                    {
+                                                        <option value="@item.idTour" data-costo="@item.costoMexica">@item.tour</option>
+                                                    }*@
+                                                </select>
+                                            </div>                                          
 
-                                            <div class="col-md-2">
-                                                <label>Fecha Venta </label>
-                                                <div class="input-group date" id="FechaVentat">
-                                                    <input type="text" name="fechaVentat" class="form-control input-sm" />
-                                                    <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-calendar"></span>
-                                                    </span>
+                                            <div class="col-md-4">
+                                                <label>Ingrese Nombre Tour</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">$</span>
+                                                    <input type="text" class="form-control input-sm" id="tourr" name="tourr" value="" readonly="readonly">
+                                                    <span class="input-group-addon">.00</span>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-4">
-                                                <label>Seleccione Tour</label>
-                                                <select class="form-control input-sm" id="idTour" name="idTour">
-                                                    <option value="-1" disabled="" selected=""></option>
-                                                    @foreach (var item in ViewBag.listaTour)
-                                                    {
-
-                                                        <option value="@item.id_tour" data-costoax="@item.costo_axkan" data-costoag="@item.costo_agencia">@item.tour</option>
-                                                        @*< option value = "@item.id_tour" data - costo = "@item.costoMexica" > @item.tour </ option > *@
-                                                    }
-                                                </select>
-                                            </div>
-
-                                            @*<div class="col-md-2">
-                                                    <label>Seleccione Tour</label>
-                                                    <select class="form-control input-sm" id="idTour" name="idTour">
-                                                        @foreach (var item in ViewBag.listaOrigenTour)
-                                                        {
-                                                        <option value="@item.idOrigenTour">@item.descripcion</option>
-                                                        }
-                                                    </select>
-                                                </div>*@
-
-                                            @*<div class="col-md-2">
-                                                    <label>Seleccione Paquete</label>
-                                                    <select class="form-control input-sm" id="idPaquete" name="idPaquete">
-                                                        @foreach (var item in ViewBag.listaPaquete)
-                                                        {
-                                                        <option value="@item.idPaquete">@item.paquete</option>
-                                                        }
-                                                    </select>
-                                                </div>*@
-
-                                            @*<div class="col-md-2">
-                                                    <label>Tipo Costo</label>
-                                                    <select class="form-control input-sm" id="tipo_costo" name="tipo_costo">
-                                                        <option></option>
-                                                    </select>
-                                                </div>*@
-
-                                            <div class="col-md-2">
-                                                <label>Costo Axkan</label>
+                                                <label>Saliendo de..</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">$</span>
-                                                    <input type="text" class="form-control input-sm" id="costoVentaax" name="costoVentaax" value="" readonly="readonly">
+                                                    <input type="text" id="saliendor" name="saliendor" class="form-control input-sm">
                                                     <span class="input-group-addon">.00</span>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-2">
-                                                <label>Costo Agencia</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                    <input type="text" class="form-control input-sm" id="costoVentaag" name="costoVentaag" value="" readonly="readonly">
-                                                    <span class="input-group-addon">.00</span>
-                                                </div>
-                                            </div>
-
-                                            @*<div class="col-md-2">
-                                                    <label>Costo Vendido</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">$</span>
-                                                        <input type="text" id="costoVendidot" name="costoVendidot" class="form-control input-sm">
-                                                        <span class="input-group-addon">.00</span>
-                                                    </div>
-                                                </div>*@
-                                        </div>
-                                    </div>
-                                    <!-- end row -->
-                                    <br />
-                                    <div class="row">
-                                        <div class="form-group">
-
                                             <div class="col-md-1">
-                                            </div>
-
-                                            <div class="col-md-1">
-                                                <label>Adultos</label>
+                                                <label>Numero Dias</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control input-sm" id="adultost" name="adultost">
+                                                    <input type="text" class="form-control input-sm" id="numerodiasr" name="numerodiasr">
                                                     <span class="input-group-addon">
                                                         <span class="fa  fa-user"></span>
                                                     </span>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-2">
-                                                <label>Costo Adulto</label>
+                                            <div class="col-md-1">
+                                                <label>Minino Pax</label>
                                                 <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                    <input type="text" id="costoAdulto" name="costoAdulto" class="form-control input-sm">
-                                                    <span class="input-group-addon">.00</span>
+                                                    <input type="text" class="form-control input-sm" id="minimopaxr" name="minimopaxr">
+                                                    <span class="input-group-addon">
+                                                        <span class="fa  fa-child"></span>
+                                                    </span>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-1">
-                                                <label>Niños</label>
+                                            <div class="col-md-4">
+                                                <label>Descripcion</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control input-sm" id="ninost" name="ninost">
+                                                    <input type="text" class="form-control input-sm" id="descripcionr" name="descripcionr">
                                                     <span class="input-group-addon">
                                                         <span class="fa  fa-child"></span>
                                                     </span>
@@ -157,13 +98,33 @@
                                             </div>
 
                                             <div class="col-md-2">
-                                                <label>Costo Niño</label>
+                                                <label>Hora Salida</label>
                                                 <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                    <input type="text" id="costonino" name="costonino" class="form-control input-sm">
-                                                    <span class="input-group-addon">.00</span>
+                                                    <input type="text" class="form-control input-sm" id="horasalidar" name="horasalidar">
+                                                    <span class="input-group-addon">
+                                                        <span class="fa  fa-child"></span>
+                                                    </span>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-2">
+                                                <label>Hora Regreso</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control input-sm" id="horaregresor" name="horaregresor">
+                                                    <span class="input-group-addon">
+                                                        <span class="fa  fa-child"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                    <br />
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <!-- begin col-4 -->
+                                        <div class="form-group">
 
                                             <div class="col-md-2">
                                                 <label>Pax</label>
@@ -175,25 +136,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-2">
-                                                <label>Total a Pagar</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                    <input type="text" id="ttpagar" name="ttpagar" class="form-control input-sm">
-                                                    <span class="input-group-addon">.00</span>
-                                                </div>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <!-- begin row -->
-                                    <div class="row">
-                                        <!-- begin col-4 -->
-                                        <div class="form-group">
-
-                                            <div class="col-md-1">
-                                            </div>
 
                                             <div class="col-md-2">
                                                 <label>Fecha Inicio</label>
@@ -235,20 +178,18 @@
                                     <div class="row">
                                         <!-- begin col-4 -->
                                         <div class="form-group">
-                                            <div class="col-md-1">
 
-                                            </div>
                                             <div class="col-md-2">
                                                 <label>Correo Cliente</label>
                                                 <input type="text" class="form-control input-sm" id="correot" name="correot">
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-5">
                                                 <label>Recoger en...</label>
                                                 <input type="text" class="form-control input-sm" id="recogert" name="recogert">
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-5">
                                                 <label>Observaciones...</label>
                                                 <input type="text" class="form-control input-sm" id="observacionest" name="observacionest">
                                             </div>
@@ -261,10 +202,6 @@
                                     <div class="row">
                                         <!-- begin col-4 -->
                                         <div class="form-group">
-
-                                            <div class="col-md-1">
-
-                                            </div>
 
                                             <div class="col-md-2">
                                                 <label>Forma de Pago</label>
@@ -311,6 +248,13 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-md-2">
+                                                <label>Referencia</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control input-sm" id="referenciat" name="referenciat">
+                                                </div>
+                                            </div>
+
 
                                             @*<div class="col-md-2">
                                                     <label>Referencia</label>
@@ -324,22 +268,6 @@
                                     <br />
                                     <div class="row">
                                         <div class="form-group">
-                                            <div class="col-md-1">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Referencia</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control input-sm" id="referenciat" name="referenciat">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-1">
-
-                                            </div>
                                             <div class="col-md-2">
                                                 <button type="submit" class="btn btn-primary btn-sm m-r-5">Agregar</button>
                                             </div>
@@ -480,6 +408,9 @@
                                     <div class="row">
                                         <!-- begin col-4 -->
                                         <div class="form-group">
+
+
+
 
                                             <div class="col-md-2">
                                                 <label>Fecha Inicio</label>
@@ -730,59 +661,4 @@
     </div>
     <!-- end row -->
 </div>
-<!-- end #content -->
-@*<script src="~/Content/template/assets/plugins/jquery/jquery-1.9.1.min.js"></script>*@
-@*<script>
-        //$(document).ready(function () {
-
-        //});
-
-        //function paginaAjax() {
-        //    $.ajax({
-        //        type: "POST",
-        //        dataType: 'text',
-        //        url: '/Venta/VerTabla/',
-        //        data: {
-        //            id: 1
-        //        },
-        //        error: function (xhr) {
-        //            alert('Error: ' + xhr.statusText);
-        //        },
-        //        success: function (result) {
-        //            alert("success");
-        //        },
-        //        async: true
-        //    });
-        //}
-
-        //    //if ((typeof preFunction) == 'function') {
-        //    //    preFunction();
-        //    //}
-        //    //$.ajax(
-        //    //{
-        //    //    url: url,
-        //    //    type: method,
-        //    //    data: { 'idPaqueteDetalles': 2 },
-        //    //    dataType: 'json',
-        //    //    contentType: 'application/json; charset=utf-8',
-        //    //    error: function (xhr) {
-        //    //        alert('Error: ' + xhr.statusText);
-        //    //    },
-        //    //    success: function (result) {
-        //    //        alert("success");
-        //    //    },
-        //    //    cache: cache,
-        //    //    async: async
-        //    //}).done(function (pagina) {
-        //    //    $('#' + idSeccion).html(pagina);
-        //    //    if ((typeof postFunction) == 'function') {
-        //    //        //postFunction();
-        //    //    }
-        //    //}).fail(function () {
-        //    //    //$('#divModalCargaAjax').hide();
-        //    //    //$('#' + idSeccion).html('<div class="divAlertaRojo">Ocurrió un error inesperado. Por favor reporte esto a la plataforma o al correo "ovallesoft@gmail.com". Pedimos disculpas y damos gracias por su comprensión.</div>');
-        //    //});
-        //}
-    </script>*@
-
 

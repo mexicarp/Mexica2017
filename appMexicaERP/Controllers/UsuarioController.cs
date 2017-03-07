@@ -13,6 +13,7 @@ namespace appMexicaERP.Controllers
 {
     public class UsuarioController : Controller
     {
+        
         private string randomString(int size)
         {
             Random random = new Random((int)DateTime.Now.Ticks);
@@ -130,11 +131,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Registrar(string id)
         {
-            
+
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
             ViewBag.datosUsuario = DbContext.Usuarios.Where(x => x.idUsuario == id).FirstOrDefault();
-   
+
             return View();
         }
 
@@ -197,7 +198,7 @@ namespace appMexicaERP.Controllers
         [HttpPost]
         public ActionResult Sesion(FormCollection formCollection)
         {
-            
+
             string txtCorreoElectronico = formCollection["txtCorreoElectronicoTemporal"];
             string txtContrasenia = formCollection["txtContraseniaTemporal"];
 
@@ -205,7 +206,7 @@ namespace appMexicaERP.Controllers
 
             TUsuario DatosAccesoUsuario = DbContext.Usuarios.Where(x => x.correoElectronico == txtCorreoElectronico && x.contrasenia == txtContrasenia).FirstOrDefault();
 
-            if(DatosAccesoUsuario == null)
+            if (DatosAccesoUsuario == null)
             {
                 TempData["mensajeGlobal"] = "Correo Electrónico o password incorrecto.<br>";
                 TempData["color"] = System.Configuration.ConfigurationManager.AppSettings["colorError"];
@@ -217,9 +218,10 @@ namespace appMexicaERP.Controllers
             Session["nombre"] = DatosAccesoUsuario.nombre;
             Session["correoElectronico"] = DatosAccesoUsuario.correoElectronico;
             Session["idUsuario"] = DatosAccesoUsuario.idUsuario;
-          
+
             TempData["mensajeGlobal"] = "Bienvenido al sistema.<br>";
             TempData["color"] = System.Configuration.ConfigurationManager.AppSettings["colorCorrecto"];
+            HttpContext.Application["Usuario"] = DatosAccesoUsuario.nombre;
 
             return Redirect("Index");
 
@@ -229,7 +231,7 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Logout()
         {
-         
+
             HttpContext.Session.Clear();
 
             return Redirect(Url.Action("Sesion", "Usuario"));
