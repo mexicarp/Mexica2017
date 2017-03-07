@@ -21,9 +21,9 @@ namespace appMexicaERP.Controllers
 
             ViewBag.listaCiudades = dbCtx.ciudades.OrderByDescending(x => x.idCiudad).ToList();
 
-            ViewBag.listaIden = dbCtx.empleados.OrderByDescending(x => x.idIdentificacion).ToList();
+            ViewBag.listaIden = dbCtx.tipoidentificaciones.OrderByDescending(x => x.idIdentificacion).ToList();
 
-            ViewBag.listaTipoEmp = dbCtx.empleados.OrderByDescending(x => x.idTipoEmpleado).ToList();
+            ViewBag.listaTipoEmp = dbCtx.tiposempleados.OrderByDescending(x => x.idTipoEmpleado).ToList();
 
             ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa).ToList();
 
@@ -115,8 +115,8 @@ namespace appMexicaERP.Controllers
             ViewBag.listaEmpleados = dbCtx.empleados.OrderByDescending(x => x.idEmpleado);
             ViewBag.listaEmpresas = dbCtx.empresas.OrderByDescending(x => x.idEmpresa).ToList();
             ViewBag.listaCiudades = dbCtx.ciudades.OrderByDescending(x => x.idCiudad).ToList();
-            ViewBag.listaIden = dbCtx.empleados.OrderByDescending(x => x.idIdentificacion).ToList();
-            ViewBag.listaTipoEmp = dbCtx.empleados.OrderByDescending(x => x.idTipoEmpleado).ToList();
+            ViewBag.listaIden = dbCtx.tipoidentificaciones.OrderByDescending(x => x.idIdentificacion).ToList();
+            ViewBag.listaTipoEmp = dbCtx.tiposempleados.OrderByDescending(x => x.idTipoEmpleado).ToList();
 
             ViewBag.modificarEmpleado = dbCtx.empleados.Find(id);
             return View();

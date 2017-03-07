@@ -9,7 +9,7 @@ using appMexicaERP.Models;
 
 namespace appMexicaERP.Controllers
 {
-    public class TipoEmpController : Controller
+    public class TipoEmpleadoController : Controller
     {
 
         [HttpGet]
@@ -38,7 +38,7 @@ namespace appMexicaERP.Controllers
 
                 dbCtx.SaveChanges();
 
-                return RedirectToAction("Consulta", "TipoEmpleado");
+                return RedirectToAction("Registrar", "TipoEmpleado");
 
 
             }
@@ -76,7 +76,6 @@ namespace appMexicaERP.Controllers
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
             ViewBag.listaTipoEmp = dbCtx.tiposempleados.OrderByDescending(x => x.idTipoEmpleado);
-
             ViewBag.modificarTipoEmp = dbCtx.tiposempleados.Find(id);
             return View();
         }
@@ -86,8 +85,9 @@ namespace appMexicaERP.Controllers
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
             TTipoEmpleado TipoEmpleado = dbCtx.tiposempleados.Find(int.Parse(formCollection["txtidTipoEmpleado"]));
             TipoEmpleado.descripcion = formCollection["txtdescripcion"];
+            TipoEmpleado.estatus = int.Parse(formCollection["selectestatus"]);
             dbCtx.SaveChanges();
-            return RedirectToAction("Consulta", "TipoEmpleado");
+            return RedirectToAction("Registrar", "TipoEmpleado");
         }
     }
 }

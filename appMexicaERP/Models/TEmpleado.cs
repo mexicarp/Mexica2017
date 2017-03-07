@@ -42,7 +42,8 @@ namespace appMexicaERP.Models
         public DateTime fechaBaja { get; set; }
         public string motivoBaja { get; set; }
         public int estatus { get; set; }
-        public string foto { get; set; }
+        public string foto { get; set; } // no esta descripcion ? en que tabla ? traigo la descripcion del tipo de empleado ok
+
 
         #region Parent
         public TEmpresa parentcatEmpresas { get; set; }

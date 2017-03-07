@@ -5180,7 +5180,7 @@
     <Compile Include="Controllers\PublicarController.cs" />
     <Compile Include="Controllers\PuestoController.cs" />
     <Compile Include="Controllers\TipoEmpleadoController.cs" />
-    <Compile Include="Controllers\TipoIndentificacionController.cs" />
+    <Compile Include="Controllers\TipoIdentificacionController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VentaController.cs" />
     <Compile Include="DAL\DBappWebMexicaERPcontext.cs" />
@@ -5205,7 +5205,7 @@
     <Compile Include="Models\TPaqueteDetalle.cs" />
     <Compile Include="Models\TPuesto.cs" />
     <Compile Include="Models\TTipoEmpleado.cs" />
-    <Compile Include="Models\TTipoIndentificacion.cs" />
+    <Compile Include="Models\TTipoIdentificacion.cs" />
     <Compile Include="Models\TTour.cs" />
     <Compile Include="Models\TUsuario.cs" />
     <Compile Include="Models\TVenta.cs" />
@@ -5253,12 +5253,12 @@
     <Content Include="Views\ControlVehicular\Registrar.cshtml" />
     <Content Include="Views\ControlVehicular\Consulta.cshtml" />
     <Content Include="Views\ControlVehicular\Modificar.cshtml" />
-    <Content Include="Views\TipoIndentificacion\Registrar.cshtml" />
-    <Content Include="Views\TipoIndentificacion\Consulta.cshtml" />
-    <Content Include="Views\TipoIndentificacion\Modificar.cshtml" />
-    <Content Include="Views\TipoEmp\Registrar.cshtml" />
-    <Content Include="Views\TipoEmp\Consulta.cshtml" />
-    <Content Include="Views\TipoEmp\Modificar.cshtml" />
+    <Content Include="Views\TipoIdentificacion\Registrar.cshtml" />
+    <Content Include="Views\TipoIdentificacion\Consulta.cshtml" />
+    <Content Include="Views\TipoIdentificacion\Modificar.cshtml" />
+    <Content Include="Views\TipoEmpleado\Registrar.cshtml" />
+    <Content Include="Views\TipoEmpleado\Consulta.cshtml" />
+    <Content Include="Views\TipoEmpleado\Modificar.cshtml" />
     <Content Include="Views\Puesto\Registrar.cshtml" />
     <Content Include="Views\Puesto\Consulta.cshtml" />
     <Content Include="Views\Puesto\Modificar.cshtml" />

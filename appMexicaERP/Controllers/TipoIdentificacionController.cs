@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace appMexicaERP.Controllers
 {
-    public class TipoIndentificacion : Controller
+    public class TipoIndentificacionController : Controller
     {
         [HttpGet]
         public ActionResult Registrar()
