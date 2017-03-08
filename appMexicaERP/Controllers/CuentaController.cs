@@ -15,6 +15,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Registrar()
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
             ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
@@ -83,6 +88,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Ver()
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
             ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
@@ -95,6 +105,10 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Modificar(string id)
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
             ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);

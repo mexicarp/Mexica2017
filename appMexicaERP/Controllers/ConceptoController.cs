@@ -12,6 +12,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Insertar()
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             return View();
         }
 
@@ -70,6 +75,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Ver()
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
             ViewBag.listaTConcepto = dbCtx.Conceptos.OrderByDescending(x => x.idConcepto).ToList();

@@ -15,6 +15,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Registrar()
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
             ViewBag.listaBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
@@ -53,7 +58,7 @@ namespace appMexicaERP.Controllers
 
                 Movimiento.idMovimiento = Guid.NewGuid().ToString();
                 Movimiento.idUsuario = "51f78c71-6afb-4ca5-b791-dd6bfdf3c9e5";
-                Movimiento.idConcepto = formCollection["selectConceptos"];
+                //Movimiento.idConcepto = formCollection["selectConceptos"];
                 Movimiento.idCuenta = formCollection["selectCuentas"];
                 Movimiento.tipoTransacion = formCollection["selectTipoTransacion"];
                 Movimiento.deposito = decimal.Parse(formCollection["selectTipoTransacion"]== "1" ? formCollection["txtCantidad"] : "0");
@@ -63,7 +68,7 @@ namespace appMexicaERP.Controllers
                 Movimiento.referencia = formCollection["txtReferencia"];
                 Movimiento.fecha = DateTime.Parse(formCollection["datepicker-default"].ToString());
                 Movimiento.autorizacion = formCollection["txtxAutorizadopor"];
-                Movimiento.concepto = formCollection["txtConcepto"];
+                //Movimiento.concepto = formCollection["txtConcepto"];
                 Movimiento.fechaRegistro = DateTime.Now;
                 Movimiento.fechaModificacion = DateTime.Now;
 
@@ -93,6 +98,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Ver()
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
             ViewBag.listaBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
@@ -120,6 +130,11 @@ namespace appMexicaERP.Controllers
         [HttpGet]
         public ActionResult Modificar(string id)
         {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
             ViewBag.listaBancos = dbCtx.Bancos.OrderByDescending(x => x.idBanco);
