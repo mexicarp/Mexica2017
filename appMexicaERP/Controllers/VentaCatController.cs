@@ -29,6 +29,22 @@ namespace appMexicaERP.Controllers
             return View();
         }
 
+        public ActionResult CatVentasPaquete()
+        {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+            DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
+
+            ViewBag.listaCategoria = DbContext.CategoriasTours.OrderBy(x => x.idcategoriatour).ToList();
+            ViewBag.listaTour = DbContext.CatalogoTours.OrderBy(x => x.idTour).Where(x => x.estatus == 1).ToList();
+            ViewBag.listaAgencia = DbContext.Agencias.OrderBy(x => x.idAgencia).Where(x => x.estatus == 1).ToList();
+            ViewBag.listaTourPrecios = DbContext.Precios.Include(i1 => i1.parenTours).Include(i1 => i1.parenAgencias).Where(x => x.estatus == 1).ToList();//Where(w1 => w1.idAgencia == id).ToList();
+
+            return View();
+        }
+
         [HttpGet]
         public ActionResult EliminaTour(FormCollection formCollection, string id)
         {
@@ -164,6 +180,9 @@ namespace appMexicaERP.Controllers
             EditaAgencia.nombre = formCollection["nombreEdit"];
             EditaAgencia.direccion = formCollection["direccionEdit"];
             EditaAgencia.descripcion = formCollection["descripcionEditA"];
+            EditaAgencia.nombreEncargado = formCollection["nombreEditA"];
+            EditaAgencia.correo = formCollection["correoEditA"];
+            EditaAgencia.telefono = formCollection["telefonoEditA"];
             DbContext.SaveChanges();
             return RedirectToAction("CatVentas", "VentaCat");
         }

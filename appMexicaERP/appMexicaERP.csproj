@@ -5281,6 +5281,7 @@
     <Content Include="Views\Movimiento\ListarPorMovimientosPorCuentaConAjax.cshtml" />
     <Content Include="Views\VentaCat\CatVentas.cshtml" />
     <Content Include="Views\VentaCat\LlenaTour.cshtml" />
+    <Content Include="Views\VentaCat\CatVentasPaquete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

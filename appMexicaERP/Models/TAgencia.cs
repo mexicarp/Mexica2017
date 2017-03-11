@@ -21,6 +21,9 @@ namespace appMexicaERP.Models
         public DateTime fechaRegistro { get; set; }
         public DateTime fechaModificacion { get; set; }
         public int estatus { get; set; }
+        public string nombreEncargado { get; set; }
+        public string correo { get; set; }
+        public string telefono { get; set; }
         #endregion
 
         #region Parent

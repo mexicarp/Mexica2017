@@ -1,0 +1,625 @@
+﻿
+@{
+    ViewBag.Title = "CatVentasPaquete";
+}
+
+<!-- begin #content -->
+<div id="content" class="content" style="margin-top:-30px !important;">
+    <!-- begin row -->
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+
+                    <div id="wizard">
+                        <ol>
+                            <li>
+                                CATALOGO TOURS
+                                @*<small>Ventas  Tour a  Realizar...</small>*@
+                            </li>
+                            <li>
+                                CATALOGO AGENCIAS
+                                @*<small>Ventas  Paquete a  Realizar...</small>*@
+                            </li>
+                            <li>
+                                CATALOGO PRECIOS
+                                @*<small>Cancela venta(Tour o Pquete)</small>*@
+                            </li>
+                        </ol>
+                        <!-- begin wizard step-1 -->
+                        <div>
+                            <form action="@Url.Action("InsertarCatTour", "VentaCat" )" method="POST">
+                                <fieldset>
+                                    @*<legend class="pull-left width-full"></legend>*@
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Seleccione Categoria</label>
+                                                <select class="form-control input-sm" id="idcategoriatour" name="idcategoriatour">
+                                                    <option value="-1" disabled="" selected="">-Seleccione Categoria-</option>
+                                                    @foreach (var item in ViewBag.listaCategoria)
+                                                    {
+
+                                                        <option value="@item.idcategoriatour">@item.descripcion</option>
+
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Nombre Tour</label>
+                                                <input type="text" class="form-control input-sm" id="tour" name="tour" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Descripción</label>
+                                                <input type="text" class="form-control input-sm" id="descripcion" name="descripcion" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                    <br />
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Origen Tour</label>
+                                                <input type="text" class="form-control input-sm" id="origen" name="origen" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Destino Tour</label>
+                                                <input type="text" class="form-control input-sm" id="destino" name="destino" />
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label>H Salida</label>
+                                                <input type="text" class="form-control input-sm" id="horaSalida" name="horaSalida" />
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label>H Regreso</label>
+                                                <input type="text" class="form-control input-sm" id="horaRegreso" name="horaRegreso" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Duracion Horas</label>
+                                                <input type="text" class="form-control input-sm" id="duracion" name="duracion" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                    <br />
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-primary btn-sm m-r-5">Agregar Tour</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                    <br />
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <table id="data-table_tour" class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr style="width:10% !important">
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;  width:55% !important;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>TOUR </th>
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>DETALLE TOUR </th>
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;' !important;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>EDICIÓN</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="body-data-table">
+
+                                                        @foreach (var item in ViewBag.listaTour)
+                                                        {
+
+                                                            <tr>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.tour</td>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.descripcion</td>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">
+                                                                    <a class="btn btn-primary btn-icon btn-circle btn-lg" onclick="tourEdita('@item.idTour', '@item.tour','@item.descripcion', '@item.origen','@item.destino', '@item.horaSalida','@item.horaRegreso', '@item.duracion');"><i class="fa fa-automobile"></i></a>
+                                                                    <a class="btn btn-danger btn-icon btn-circle btn-lg" onclick="EliminaTour('@item.idTour');"><i class="fa fa-times"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <div class="modal fade" id="modal-tour">
+                                <form action="@Url.Action("EditaTour", "VentaCat" )" id="frmEditarTour" method="POST">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="form-group">
+
+                                                        <div class="col-md-12">
+                                                            <input type="text" class="form-control input-sm" id="idTourEdit" name="idTourEdit" style="visibility:hidden !important;" />
+                                                            <label>Nombre Tour</label>
+                                                            <input type="text" class="form-control input-sm" id="tourEdit" name="tourEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Descripción</label>
+                                                            <input type="text" class="form-control input-sm" id="descripcionEdit" name="descripcionEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Origen</label>
+                                                            <input type="text" class="form-control input-sm" id="origenEdit" name="origenEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Destino</label>
+                                                            <input type="text" class="form-control input-sm" id="destinoEdit" name="destinoEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Hora Salida</label>
+                                                            <input type="text" class="form-control input-sm" id="horaSalidaEdit" name="horaSalidaEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Hora Regreso</label>
+                                                            <input type="text" class="form-control input-sm" id="horaRegresoEdit" name="horaRegresoEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Duracion</label>
+                                                            <input type="text" class="form-control input-sm" id="duracionEdit" name="duracionEdit" />
+                                                        </div>
+                                                        <br />
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+                                                <a href="#" onclick="EditaTours();" class="btn btn-sm btn-success">Editar</a>
+                                                @*<a href="javascript:;" class="btn btn-sm btn-success">Eliminar</a>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end wizard step-1 -->
+                        <!-- begin wizard step-2 -->
+                        <div>
+                            <form action="@Url.Action("InsertarCatAgencia", "VentaCat" )" method="POST">
+                                <fieldset>
+                                    @*<legend class="pull-left width-full"></legend>*@
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <label>Seleccione Tour</label>
+                                                <select class="form-control input-sm" id="idTour" name="idTour">
+                                                    <option value="-1" disabled="" selected="">-Seleccione Tour-</option>
+                                                    @foreach (var item in ViewBag.listaTour)
+                                                    {
+
+                                                        <option value="@item.idTour">@item.tour</option>
+
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Nombre Agencia</label>
+                                                <input type="text" class="form-control input-sm" id="nombre" name="nombre" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Direccion Agencia</label>
+                                                <input type="text" class="form-control input-sm" id="direccion" name="direccion" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                    <br />
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <label>Descripcion Agencia</label>
+                                                <input type="text" class="form-control input-sm" id="descripcion" name="descripcion" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Nombre Encargado</label>
+                                                <input type="text" class="form-control input-sm" id="nombreE" name="nombreE" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Correo Electronico</label>
+                                                <input type="text" class="form-control input-sm" id="correoE" name="correoE" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <label>Telefono </label>
+                                                <input type="text" class="form-control input-sm" id="telefonoE" name="telefonoE" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- end row -->
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-primary btn-sm m-r-5">Agregar Agencias</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <table id="data-table_agencia" class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr style="width:10% !important">
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;' width:40% !important;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>AGENCIA </th>
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>DIRECCION </th>
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;' !important;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>EDICION </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="body-data-table">
+
+                                                        @foreach (var item in ViewBag.listaAgencia)
+                                                        {
+
+                                                            <tr>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.nombre</td>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.direccion</td>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">
+                                                                    <a class="btn btn-primary btn-icon btn-circle btn-lg" onclick="agenciaEdita('@item.idAgencia', '@item.nombre','@item.direccion', '@item.descripcion', '@item.nombreEncargado', '@item.correo', '@item.telefono');"><i class="fa fa-automobile"></i></a>
+                                                                    <a class="btn btn-danger btn-icon btn-circle btn-lg" onclick="EliminaAgencia('@item.idAgencia');"><i class="fa fa-times"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <div class="modal fade" id="modal-agencia">
+                                <form action="@Url.Action("EditaAgencia", "VentaCat" )" id="frmEditarAgencia" method="POST">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="form-group">
+
+                                                        <div class="col-md-12">
+                                                            <input type="text" class="form-control input-sm" id="idAgenciaEdit" name="idAgenciaEdit" style="visibility:hidden !important;" />
+                                                            <label>Nombre Agencia</label>
+                                                            <input type="text" class="form-control input-sm" id="nombreEdit" name="nombreEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Direccion</label>
+                                                            <input type="text" class="form-control input-sm" id="direccionEdit" name="direccionEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Descripción</label>
+                                                            <input type="text" class="form-control input-sm" id="descripcionEditA" name="descripcionEditA" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Nombre Encargado</label>
+                                                            <input type="text" class="form-control input-sm" id="nombreEditA" name="nombreEditA" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Correo</label>
+                                                            <input type="text" class="form-control input-sm" id="correoEditA" name="correoEditA" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Telefono</label>
+                                                            <input type="text" class="form-control input-sm" id="telefonoEditA" name="telefonoEditA" />
+                                                        </div>
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+                                                <a href="#" onclick="EditaAgencias();" class="btn btn-sm btn-success">Editar</a>
+                                                @*<a href="javascript:;" class="btn btn-sm btn-success">Eliminar</a>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end wizard step-2 -->
+                        <!-- begin wizard step-3 -->
+                        <div>
+                            <form action="@Url.Action("InsertarCatPrecio", "VentaCat" )" method="POST">
+                                <fieldset>
+                                    @*<legend class="pull-left width-full"></legend>*@
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>Seleccione Agencia</label>
+                                                <select class="form-control input-sm" id="idAgencia" name="idAgencia">
+                                                    <option value="-1" disabled="" selected="">-Seleccione Agencia-</option>
+                                                    @foreach (var item in ViewBag.listaAgencia)
+                                                    {
+
+                                                        <option value="@item.idAgencia">@item.nombre</option>
+
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>Seleccione Tour</label>
+                                                <select class="form-control input-sm" id="idTour" name="idTour">
+                                                    <option value="-1" disabled="" selected="">-Seleccione Tour-</option>
+                                                    @foreach (var item in ViewBag.listaTour)
+                                                    {
+
+                                                        <option value="@item.idTour">@item.tour</option>
+
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                    <br />
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Precio Alta</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">$</span>
+                                                    <input type="text" class="form-control input-sm" id="precioAlta" name="precioAlta">
+                                                    <span class="input-group-addon">.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Precio Baja</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">$</span>
+                                                    <input type="text" class="form-control input-sm" id="precioBaja" name="precioBaja">
+                                                    <span class="input-group-addon">.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                    <br />
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-primary btn-sm m-r-5">Agregar Precio</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                    <br />
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <table id="data-table_agenciatour" class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr style="width:10% !important">
+
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;  width:35% !important;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>Nombre Agencia </th>
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>Nombre Tour </th>
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>Precio Alta </th>
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>Precio Baja </th>
+                                                            <th style='text-align:center !important; font-style:normal; font-size :13pt;' class='sorting' tabindex='0' aria-controls='searchable' rowspan='1' colspan='1' aria-label='Rendering engine: activate to sort column ascending'>Edición </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="body-data-table">
+
+                                                        @foreach (var item in ViewBag.listaTourPrecios)
+                                                        {
+
+                                                            <tr>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.parenAgencias.nombre</td>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.parenTours.tour</td>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.precioALta</td>
+                                                                <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.precioBaja</td>
+                                                                @*<td><a class="btn btn-primary btn-icon btn-circle btn-lg" onclick="agenciaEdita('@item.idAgencia', '@item.nombre','@item.direccion', '@item.descripcion');"><i class="fa fa-automobile"></i></a></td>*@
+                                                                <td>
+                                                                    <a class="btn btn-primary btn-icon btn-circle btn-lg" onclick="precioEdita('@item.idPrecio','@item.parenAgencias.nombre','@item.parenTours.tour','@item.precioALta','@item.precioBaja');"><i class="fa fa-money"></i></a>
+                                                                    <a class="btn btn-danger btn-icon btn-circle btn-lg" onclick="EliminaPrecio('@item.idPrecio');"><i class="fa fa-times"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <div class="modal fade" id="modal-precio">
+                                <form action="@Url.Action("EditaPrecio", "VentaCat" )" id="frmEditarPrecio" method="POST">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="form-group">
+
+                                                        <div class="col-md-12">
+                                                            <input type="text" class="form-control input-sm" id="idPrecioEdit" name="idPrecioEdit" style="visibility:hidden !important;" />
+                                                            <label>Nombre Agencia</label>
+                                                            <input type="text" class="form-control input-sm" id="nombreEditP" name="nombreEditP" readonly="readonly" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Tour</label>
+                                                            <input type="text" class="form-control input-sm" id="tourEditaP" name="tourEditaP" readonly="readonly" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Precio Alta</label>
+                                                            <input type="text" class="form-control input-sm" id="precioAltaEdit" name="precioAltaEdit" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Precio Baja</label>
+                                                            <input type="text" class="form-control input-sm" id="precioBajaEdit" name="precioBajaEdit" />
+                                                        </div>
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+                                                <a href="#" onclick="EditaPrecios();" class="btn btn-sm btn-success">Editar</a>
+                                                @*<a href="javascript:;" class="btn btn-sm btn-success">Eliminar</a>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end wizard step-3 -->
+                    </div>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-12 -->
+    </div>
+    <!-- end row -->
+</div>
+<!-- end #content -->
+
+<script type="text/javascript">
+    function tourEdita(idTour, tour, descripcion, origen, destino, horaSalida, horaRegreso, duracion) {
+        idTourEdit = idTour;
+        document.getElementById("idTourEdit").value = idTour;
+        document.getElementById("tourEdit").value = tour;
+        document.getElementById("descripcionEdit").value = descripcion;
+        document.getElementById("origenEdit").value = origen;
+        document.getElementById("destinoEdit").value = destino;
+        document.getElementById("horaSalidaEdit").value = horaSalida;
+        document.getElementById("horaRegresoEdit").value = horaRegreso;
+        document.getElementById("duracionEdit").value = duracion;
+        $('#modal-tour').modal('show');
+    }
+    function EditaTours() {
+        $("#frmEditarTour").submit();
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------
+    function agenciaEdita(idAgencia, nombre, direccion, descripcion,nombre,correo,telefono) {
+        idTourEdit = idTour;
+        document.getElementById("idAgenciaEdit").value = idAgencia;
+        document.getElementById("nombreEdit").value = nombre;
+        document.getElementById("direccionEdit").value = direccion;
+        document.getElementById("nombreEditA").value = descripcion;
+        document.getElementById("nombreEdit").value = nombre;
+        document.getElementById("correoEditA").value = direccion;
+        document.getElementById("telefonoEditA").value = descripcion;
+        $('#modal-agencia').modal('show');
+    }
+    function EditaAgencias() {
+        $("#frmEditarAgencia").submit();
+    }
+    //--------------------------------------------------------------------------------------------------------------------------------------
+    function precioEdita(idPrecio, nombre, nombreTour, precioALta, precioBaja) {
+        idTourEdit = idTour;
+        document.getElementById("idPrecioEdit").value = idPrecio;
+        document.getElementById("nombreEditP").value = nombre;
+        document.getElementById("tourEditaP").value = nombreTour;
+        document.getElementById("precioAltaEdit").value = precioALta;
+        document.getElementById("precioBajaEdit").value = precioBaja;
+        $('#modal-precio').modal('show');
+    }
+    function EditaPrecios() {
+        $("#frmEditarPrecio").submit();
+    }
+    //--------------------------------------------------------------------------------------------------------------------------------------
+    function EliminaTour(idTour) {
+        var mensaje = confirm("¿Esta Seguro de eliminar el Tour...!?");
+        if (mensaje) {
+            window.location.href = '@Url.Action("EliminaTour", "VentaCat")' + '/' + idTour;
+        }
+        else {
+            alert("¡Proceso Cancelado!");
+        }
+    }
+    //--------------------------------------------------------------------------------------------------------------------------------------
+    function EliminaAgencia(idAgencia) {
+        var mensaje = confirm("¿Esta Seguro de eliminar la Agencia...!?");
+        if (mensaje) {
+            window.location.href = '@Url.Action("EliminaAgencia", "VentaCat")' + '/' + idAgencia;
+        }
+        else {
+            alert("¡Proceso Cancelado!");
+        }
+    }
+    //--------------------------------------------------------------------------------------------------------------------------------------
+    function EliminaPrecio(idPrecio) {
+        var mensaje = confirm("¿Esta Seguro de eliminar el Precio...!?");
+        if (mensaje) {
+            window.location.href = '@Url.Action("EliminaPrecio", "VentaCat")' + '/' + idPrecio;
+        }
+        else {
+            alert("¡Proceso Cancelado!");
+        }
+    }
+    $(document).ready(function () {
+        Tbl_Tours.init();
+        Tbl_Agencias.init();
+        Tbl_Precios.init();
+    });
+</script>
+
