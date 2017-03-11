@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+<tbody>
+    @foreach (var item in ViewBag.listaTMovimientos)
+    {
+
+        <tr>
+            <td>@item.fecha</td>
+            <td>@item.descripcion</td>
+            <td style="text-align:right;">@String.Format("{0,14:c}", item.deposito)</td>
+            <td style="text-align:right;">@String.Format("{0,14:c}", item.retiro)</td>
+            <td style="text-align:right;">@String.Format("{0,14:c}", item.saldo)</td>
+            <td style="text-align:center;">
+                <a class="btn btn-warning btn-icon btn-circle" data-click="Modificar" href="#" onclick="VerMasMovimiento('@item.idMovimiento');"><i class="fa fa-eye"></i></a> | <a class="btn btn-primary btn-icon btn-circle" data-click="Modificar" href="#" onclick="ModificarMovimiento('@item.idMovimiento');"><i class="fa fa-pencil"></i></a> | <a class="btn btn-danger btn-icon btn-circle" data-click="Modificar" href="#" onclick="EliminarMovimiento('@item.idMovimiento');"><i class="fa fa-warning"></i></a>
+            </td>
+        </tr>
+    }
+</tbody>
+

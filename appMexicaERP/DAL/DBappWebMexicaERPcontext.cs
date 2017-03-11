@@ -19,7 +19,6 @@ namespace appMexicaERP.DAL
         public DbSet<TBanco> Bancos { get; set; }
         public DbSet<TCuenta> Cuentas { get; set; }
         public DbSet<TMovimiento> Movimientos { get; set; }
-        public DbSet<TNegocio> Negocios { get; set; }
         public DbSet<TConcepto> Conceptos { get; set; }
         public DbSet<TVenta> Ventas { get; set; }
         public DbSet<TTour> Tours { get; set; }

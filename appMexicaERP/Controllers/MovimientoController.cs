@@ -22,13 +22,13 @@ namespace appMexicaERP.Controllers
 
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
+            ViewBag.listaBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco).ToList();
 
-            ViewBag.listaNegocios = DbContext.Negocios.OrderByDescending(x => x.idNegocio);
+            ViewBag.listaTEmpresa = DbContext.empresas.OrderByDescending(x => x.idEmpresa).ToList();
 
-            ViewBag.listaCuentas = DbContext.Cuentas.OrderByDescending(x => x.idCuenta);
+            ViewBag.listaCuentas = DbContext.Cuentas.OrderByDescending(x => x.idCuenta).ToList();
 
-            ViewBag.listaConcepto = DbContext.Conceptos.OrderByDescending(x => x.idConcepto);
+            ViewBag.listaConcepto = DbContext.Conceptos.OrderByDescending(x => x.idConcepto).ToList();
 
             return View();
         }
@@ -105,11 +105,11 @@ namespace appMexicaERP.Controllers
 
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
+            ViewBag.listaBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco).ToList();
 
-            ViewBag.listaNegocios = DbContext.Negocios.OrderByDescending(x => x.idNegocio);
+            ViewBag.listaTEmpresa = DbContext.empresas.OrderByDescending(x => x.idEmpresa).ToList();
 
-            ViewBag.listaCuentas = DbContext.Cuentas.OrderByDescending(x => x.idCuenta);
+            ViewBag.listaCuentas = DbContext.Cuentas.OrderByDescending(x => x.idCuenta).ToList();
 
             ViewBag.listaTMovimientos = DbContext.Movimientos.Include(x1 => x1.parentCuenta).OrderByDescending(x => x.idMovimiento);
 
@@ -119,6 +119,22 @@ namespace appMexicaERP.Controllers
         [HttpPost]
         public ActionResult ListarMovimientosPorCuentaConAjax(string id)
         {
+            DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
+
+            ViewBag.listaTMovimientos = dbCtx.Movimientos.Where(w1 => w1.idCuenta == id).OrderBy(o => o.fechaRegistro).ToList();
+
+
+            return View();
+        }
+
+        [HttpGet, HttpPost]
+        public ActionResult ListarPorMovimientosPorCuentaConAjax(string id)
+        {
+            if (Session["correoElectronico"] == null)
+            {
+                return Redirect(Url.Action("Sesion", "Usuario"));
+            }
+
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
             ViewBag.listaTMovimientos = dbCtx.Movimientos.Where(w1 => w1.idCuenta == id).OrderBy(o => o.fechaRegistro).ToList();
@@ -139,7 +155,7 @@ namespace appMexicaERP.Controllers
 
             ViewBag.listaBancos = dbCtx.Bancos.OrderByDescending(x => x.idBanco);
 
-            ViewBag.listaNegocios = dbCtx.Negocios.OrderByDescending(x => x.idNegocio);
+            //ViewBag.listaNegocios = dbCtx.Negocios.OrderByDescending(x => x.idNegocio);
 
             ViewBag.listaCuentas = dbCtx.Cuentas.OrderByDescending(x => x.idCuenta);
 

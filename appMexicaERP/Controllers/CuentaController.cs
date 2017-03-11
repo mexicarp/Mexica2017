@@ -22,9 +22,9 @@ namespace appMexicaERP.Controllers
 
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
-            ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
+            ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco).ToList();
 
-            ViewBag.listasNegocios = DbContext.Negocios.OrderByDescending(x => x.idNegocio);
+            ViewBag.listasEmpresas = DbContext.empresas.OrderByDescending(x => x.idEmpresa).ToList();
 
             return View();
         }
@@ -45,7 +45,7 @@ namespace appMexicaERP.Controllers
                         TCuenta Cuenta = new TCuenta();
 
                         Cuenta.idCuenta = Guid.NewGuid().ToString();
-                        Cuenta.idNegocio = formCollection["selectNegocio"];
+                        Cuenta.idEmpresa = int.Parse(formCollection["selectIdEmpresa"]);
                         Cuenta.numeroCuenta = int.Parse(formCollection["txtNumeroCuenta"]);
                         Cuenta.saldoInicial = decimal.Parse(formCollection["txtSaldoInicial"]);
                         Cuenta.saldoTotal = decimal.Parse(formCollection["txtSaldoInicial"]);
@@ -95,9 +95,9 @@ namespace appMexicaERP.Controllers
 
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
-            ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
+            ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco).ToList();
 
-            ViewBag.listasCuentas = DbContext.Cuentas.OrderByDescending(x => x.idCuenta);
+            ViewBag.listasCuentas = DbContext.Cuentas.OrderByDescending(x => x.idCuenta).ToList();
 
             return View();
         }
@@ -111,9 +111,9 @@ namespace appMexicaERP.Controllers
             }
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
-            ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco);
+            ViewBag.listasBancos = DbContext.Bancos.OrderByDescending(x => x.idBanco).ToList();
 
-            ViewBag.listasNegocios = DbContext.Negocios.OrderByDescending(x => x.idNegocio);
+            ViewBag.listaTEmpresa = DbContext.empresas.OrderByDescending(x => x.idEmpresa).ToList();
 
             ViewBag.modificarCuenta = DbContext.Cuentas.Find(id);
 
@@ -136,7 +136,7 @@ namespace appMexicaERP.Controllers
 
                         TCuenta Cuenta = DbContext.Cuentas.Find(formCollection["txtIdCuenta"]);
 
-                        Cuenta.idNegocio = formCollection["selectNegocio"];
+                        Cuenta.idEmpresa = int.Parse(formCollection["selectIdEmpresa"]);
                         Cuenta.numeroCuenta = int.Parse(formCollection["txtNumeroCuenta"]);
                         Cuenta.saldoInicial = decimal.Parse(formCollection["txtSaldoInicial"]);
                         Cuenta.saldoTotal = decimal.Parse(formCollection["txtSaldoInicial"]);
@@ -184,7 +184,7 @@ namespace appMexicaERP.Controllers
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaTCuenta = dbCtx.Cuentas.Where(w1 => w1.idNegocio == id).ToList();
+            ViewBag.listaTCuenta = dbCtx.Cuentas.Where(w1 => w1.idEmpresa.ToString() == id).ToList();
 
             return View();
         }
@@ -194,7 +194,7 @@ namespace appMexicaERP.Controllers
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaTCuenta = dbCtx.Cuentas.Include(i1 => i1.parentNegocio).Where(w1 => w1.idNegocio == id).ToList();
+            ViewBag.listaTCuenta = dbCtx.Cuentas.Include(i1 => i1.parentEmpresa).Where(w1 => w1.idEmpresa.ToString() == id).ToList();
            
 
             return View();

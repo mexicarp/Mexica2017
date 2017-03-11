@@ -45,7 +45,10 @@
                                    <td>@item.fechaRegistro</td>
                                    <td>@item.fechaModificacion</td>
                                    <td style="text-align:center;">@Html.Raw(item.estatus == true ? "<span style='background-color:green; color:white; padding:4px; border-radius:3px;'>Activo</span>" : "<span style='background-color:red; color:white; padding:4px; border-radius:3px;'>Inactivo</span>")</td>
-                                   <td></td>
+                                   <td align="center">
+                                       <a class="btn btn-primary btn-icon btn-circle" data-click="Modificar" href="#" onclick="ModificarConcepto('@item.idConcepto');"><i class="fa fa-pencil"></i></a> | <a class="btn btn-danger btn-icon btn-circle" data-click="Modificar" href="#" onclick="EliminarConcepto('@item.idConcepto');"><i class="fa fa-warning"></i></a>
+                                       @*<a href="#modal-dialog" class="btn btn-sm btn-success" data-toggle="modal" onclick="seleccionarEstatusBanco('@item.idBanco', '@item.nombre', '@(item.estatus ? "true" : "false")');">Modificar</a>*@
+                                   </td>
                                </tr>
                             }
                         </tbody>
@@ -100,31 +103,17 @@
 </div>
 
 <script>
-    function ModificarBanco(idBanco)
+    function ModificarConcepto(idConcepto)
     {
-        window.location.href = '@Url.Action("Modificar", "Banco")' + '/' + idBanco;
+        window.location.href = '@Url.Action("Modificar", "Concepto")' + '/' + idConcepto;
     }
 
-    function EliminarBanco(idBanco)
+    function EliminarConcepto(idConcepto)
     {
         if(confirm('Confirmar operación'))
         {
-            return window.location.href = '@Url.Action("Eliminar", "Banco")' + '/' + idBanco;
+            return window.location.href = '@Url.Action("Eliminar", "Concepto")' + '/' + idConcepto;
         }
-    }
-
-    function seleccionarEstatusBanco(idBanco, nombre, estatus) {
-
-        $('#txtIdBanco').val(idBanco);
-        $('#txtNombreBanco').val(nombre);
-
-    }
-
-    function actualizarBanco() {
-        paginaAjax('add-with-callbacks',
-            $('#frmEditarBanco').serialize(),
-
-            '@Url.Action("Modificar", "Banco")', 'POST', null, null, false, true);
     }
 
 </script>

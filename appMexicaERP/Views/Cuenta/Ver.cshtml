@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <label class="col-md-3">Banco</label>
-                                    <select name="selecIdBanco" id="selecIdBanco" class="form-control" data-size="10" onchange="paginaAjax('selectNegocio', { id : this.value }, '@Url.Action("VerPorIdBancoConAjaxParaCuenta", "Negocio")', 'POST', null, null, false, true);">
+                                    <select name="selecIdBanco" id="selecIdBanco" class="form-control" data-size="10" onchange="paginaAjax('selectNegocio', { id : this.value }, '@Url.Action("VerPorIdBancoConAjaxParaCuenta", "Empresa")', 'POST', null, null, false, true);">
                                         <option value="">Seleccione un Banco</option>
                                         @foreach (var item in ViewBag.listasBancos)
                                         {
@@ -33,7 +33,7 @@
                                     </select>
                                     </div>
                                     <div class="col-md-3">
-                                    <label class="col-md-3">Negocio</label>
+                                    <label class="col-md-3">Empresa</label>
                                     <select name="selectNegocio" id="selectNegocio" class="form-control" data-size="10" onchange="paginaAjax('body-data-table', { id : this.value }, '@Url.Action("ListarCuentasPorNegocioConAjax", "Cuenta")', 'POST', null, null, false, true);">
                                        
                                     </select>

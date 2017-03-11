@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "VerDetalles";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+
+<div class="container">
+    <div class="row">
+        <!-- begin col-6 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Registro de Negocio por Banco</h4>
+                </div>
+                <div class="panel-body">
+                    <form action="#" class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label>Concepto</label>
+                                <select name="selectConceptos" id="selectConceptos" class="form-control">
+                                    <option value="">Seleccione un concepto</option>
+                                     @foreach (var item in ViewBag.listaTConcepto)
+                                     {
+                                         if (@item.estatus == true)
+                                         {
+                                            <option value="@item.idConcepto">@item.concepto</option>
+                                         }
+
+                                     }
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Transación</label>
+                                <select name="selecTransacion" id="selecTransacion" class="form-control">
+                                    <option value="">Seleccione una transación</option>
+                                    <option value="1">Deposito</option>
+                                    <option value="2">Retiro</option>
+                                    <option value="3">Tranferencia</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Fecha Inicio</label>
+                                <input type="date" id="dateFechaInicio" name="dateFechaInicio" class="form-control" />
+                            </div>
+                            <div class="col-md-2">
+                                <label>Fecha Final</label>
+                                <input type="date" id="dateFechaFinal" name="dateFechaFinal" class="form-control" />
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                <div class="col-md-6" style="text-align:right;">
+                                    <button type="button" class="btn btn-sm btn-primary m-r-5 fa fa-eye" onclick="VerGrafica();"> Consultar</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" id="btnOcultarGrafica" style="display:none;" class="btn btn-sm btn-warning m-r-5 fa fa-clone" onclick="OcultarGrafica();"> Ocultar</button>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+                <canvas style="display:none;" id="myChart" width="200" height="400"></canvas>
+            </div>
+            <!-- end panel -->
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function VerGrafica()
+    {
+        $("#myChart").show("slow");
+        $("#btnOcultarGrafica").show("slow");
+    }
+
+    function OcultarGrafica()
+    {
+        $("#myChart").hide("slow");
+        $("#btnOcultarGrafica").hide("slow");
+    }
+
+    var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+                 labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+                     label: '# of Votes',
+            data: [8, 10, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    } ,
+    options: {
+    scales: {
+    yAxes: [{
+        ticks: {
+            beginAtZero: true
+            }
+        }]
+        }
+    }
+ });
+</script>

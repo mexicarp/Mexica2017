@@ -1,0 +1,15 @@
+﻿@{ Layout = null; }
+
+@foreach (var item in ViewBag.listaTEmpresas)
+{
+    <tr>
+        <td>@item.parentBanco.nombre</td>
+        <td>@item.descripcion</td>
+        <td>@item.parentBanco.fechaRegistro</td>
+        <td>@item.parentBanco.fechaModificacion</td>
+        <td align="center">@Html.Raw(item.estatus == 1 ? "<span style='background-color:green; color:white; padding:4px; border-radius:3px;'>Activo</span>" : "<span style='background-color:red; color:white; padding:4px; border-radius:3px;'>Inactivo</span>")</td>
+        <td>
+            <button type="button" class="btn btn-sm btn-primary m-r-5 fa fa-save" onclick="empresaModificar('@item.idEmpresa');"> Modificar</button>
+        </td>
+    </tr>
+}

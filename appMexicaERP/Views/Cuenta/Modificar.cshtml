@@ -24,18 +24,20 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label>Banco</label>
-                                <select name="selectIdBanco" id="selectIdBanco" class="form-control" onchange="paginaAjax('selectNegocio', { id : this.value }, '@Url.Action("VerPorIdBancoConAjaxParaCuenta", "Negocio")', 'POST', null, null, false, true);">
+                                <select name="selectIdBanco" id="selectIdBanco" class="form-control" onchange="paginaAjax('selectIdEmpresa', { id : this.value }, '@Url.Action("VerPorIdBancoConAjaxParaCuenta", "Empresa")', 'POST', null, null, false, true);">
                                     <option value=""></option>
-                                            @foreach (var item in ViewBag.listasBancos) { <option value="@item.idBanco" @(item.idBanco == ViewBag.modificarCuenta.idCuenta ? "selected" : "")>@item.nombre</option>
+                                    @foreach (var item in ViewBag.listasBancos)
+                                    {
+                                     <option value="@item.idBanco" @(item.idBanco == ViewBag.modificarCuenta.idCuenta ? "selected" : "")>@item.nombre</option>
                                     }
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <label>Negocio</label>
-                                <select name="selectNegocio" id="selectNegocio" class="form-control input-sm" data-size="10" data-live-search="true" data-style="btn-default">
-                                    @foreach (var item in ViewBag.listasNegocios)
+                                <label>Empresa</label>
+                                <select name="selectIdEmpresa" id="selectIdEmpresa" class="form-control input-sm" data-size="10" data-live-search="true" data-style="btn-default">
+                                    @foreach (var item in ViewBag.listaTEmpresa)
                                     {
-                                        <option value="@item.idNegocio" @(item.idNegocio == ViewBag.modificarCuenta.idNegocio ? "selected" : "")>@item.nombre</option>
+                                        <option value="@item.idEmpresa" @(item.idEmpresa == ViewBag.modificarCuenta.idEmpresa ? "selected" : "")>@item.descripcion</option>
                                     }
                                 </select>
                             </div>

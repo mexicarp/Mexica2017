@@ -20,7 +20,7 @@ namespace appMexicaERP.Models
 
         #region child
         [ForeignKey("idBanco")]
-        public virtual List<TNegocio> childNegocio { get; set; }
+        public virtual List<TEmpresa> childEmpresa { get; set; }
         #endregion
 
 

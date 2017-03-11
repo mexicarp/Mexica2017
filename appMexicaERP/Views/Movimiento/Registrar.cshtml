@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label>Bancos</label>
-                                <select name="selectBancos" id="selectBancos" class="form-control input-sm" data-size="10" data-live-search="true" data-style="btn-success" onchange="paginaAjax('selectNegocio', { id : this.value }, '@Url.Action("VerPorIdBancoConAjaxParaMovimiento", "Negocio")', 'POST', null, null, false, true);">
+                                <select name="selectBancos" id="selectBancos" class="form-control input-sm" data-size="10" data-live-search="true" data-style="btn-success" onchange="paginaAjax('selectIdEmpresa', { id : this.value }, '@Url.Action("VerPorIdBancoConAjaxParaMovimiento", "Empresa")', 'POST', null, null, false, true);">
                                     <option value=""></option>
                                     @foreach (var item in ViewBag.listaBancos)
                                     {
@@ -32,8 +32,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label>Negocios</label>
-                                    <select name="selectNegocio" id="selectNegocio" class="form-control input-sm" data-size="10" data-live-search="true" data-style="btn-default" onchange="paginaAjax('selectCuentas', { id : this.value}, '@Url.Action("VerPorIdCuentaConAjaxParaMovimiento", "Cuenta")', 'POST', null, null, false, true)">
+                                    <label>Empresa</label>
+                                    <select name="selectIdEmpresa" id="selectIdEmpresa" class="form-control input-sm" data-size="10" data-live-search="true" data-style="btn-default" onchange="paginaAjax('selectCuentas', { id : this.value}, '@Url.Action("VerPorIdCuentaConAjaxParaMovimiento", "Cuenta")', 'POST', null, null, false, true)">
                                         
                                     </select>
                                 </div>

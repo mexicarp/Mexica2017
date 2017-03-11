@@ -5176,7 +5176,6 @@
     <Compile Include="Controllers\FlotillaController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
     <Compile Include="Controllers\MovimientoController.cs" />
-    <Compile Include="Controllers\NegocioController.cs" />
     <Compile Include="Controllers\PublicarController.cs" />
     <Compile Include="Controllers\PuestoController.cs" />
     <Compile Include="Controllers\TipoEmpleadoController.cs" />
@@ -5200,7 +5199,6 @@
     <Compile Include="Models\TFormaPago.cs" />
     <Compile Include="Models\TMarca.cs" />
     <Compile Include="Models\TMovimiento.cs" />
-    <Compile Include="Models\TNegocio.cs" />
     <Compile Include="Models\TPaquete.cs" />
     <Compile Include="Models\TPaqueteDetalle.cs" />
     <Compile Include="Models\TPuesto.cs" />
@@ -5228,7 +5226,6 @@
     <Content Include="Views\Banco\Ver.cshtml" />
     <Content Include="Views\Cuenta\Registrar.cshtml" />
     <Content Include="Views\Cuenta\Ver.cshtml" />
-    <Content Include="Views\Negocio\Registrar.cshtml" />
     <Content Include="Views\Movimiento\Ver.cshtml" />
     <Content Include="Views\Banco\Modificar.cshtml" />
     <Content Include="Views\Cuenta\Modificar.cshtml" />
@@ -5236,13 +5233,8 @@
     <Content Include="Views\Usuario\CrearCuentaUsuario.cshtml" />
     <Content Include="Views\Usuario\Sesion.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Negocio\Ver.cshtml" />
-    <Content Include="Views\Negocio\Modificar.cshtml" />
-    <Content Include="Views\Negocio\ListarNegociosPorBancoConAjax.cshtml" />
-    <Content Include="Views\Negocio\VerPorIdBancoConAjaxParaMovimiento.cshtml" />
     <Content Include="Views\Cuenta\VerPorIdCuentaConAjaxParaMovimiento.cshtml" />
     <Content Include="Views\Usuario\Ver.cshtml" />
-    <Content Include="Views\Negocio\VerPorIdBancoConAjaxParaCuenta.cshtml" />
     <Content Include="Views\Cuenta\ListarCuentasPorNegocioConAjax.cshtml" />
     <Content Include="Views\Movimiento\ListarMovimientosPorCuentaConAjax.cshtml" />
     <Content Include="Views\Movimiento\Modificar.cshtml" />
@@ -5272,6 +5264,15 @@
     <Content Include="Views\Concepto\Ver.cshtml" />
     <Content Include="Views\Flotilla\Modificar.cshtml" />
     <Content Include="Views\Venta\Registro.cshtml" />
+    <Content Include="Views\Concepto\VerDetalles.cshtml" />
+    <Content Include="Views\Concepto\Modificar.cshtml" />
+    <Content Include="Views\Empresa\RelacionarConBanco.cshtml" />
+    <Content Include="Views\Empresa\VerEmpresaRelacionadoConBanco.cshtml" />
+    <Content Include="Views\Empresa\ListarEmpresasPorBancoConAjax.cshtml" />
+    <Content Include="Views\Empresa\ModificarEmpresaPorBanco.cshtml" />
+    <Content Include="Views\Empresa\VerPorIdBancoConAjaxParaCuenta.cshtml" />
+    <Content Include="Views\Empresa\VerPorIdBancoConAjaxParaMovimiento.cshtml" />
+    <Content Include="Views\Movimiento\ListarPorMovimientosPorCuentaConAjax.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5288,7 +5289,6 @@
     <Folder Include="Content\template\assets\plugins\jquery-file-upload\server\node\tmp\" />
     <Folder Include="Content\template\assets\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Views\Ciudad\" />
-    <Folder Include="Views\Empresa\" />
     <Folder Include="Views\TipoEmpresa\" />
   </ItemGroup>
   <PropertyGroup>

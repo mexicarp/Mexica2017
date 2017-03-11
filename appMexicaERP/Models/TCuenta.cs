@@ -12,9 +12,8 @@ namespace appMexicaERP.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
 
         public string idCuenta { get; set; }
-        [ForeignKey("parentNegocio")]
-        
-        public string idNegocio { get; set; }
+        [ForeignKey("parentEmpresa")]  
+        public int idEmpresa { get; set; }
         [Required(ErrorMessage = "El campo referencia es obligatorio <br>")]
         public string referencia { get; set; }
         [Required(ErrorMessage = "El campo número de cuenta es obligatorio <br>")]
@@ -31,7 +30,7 @@ namespace appMexicaERP.Models
         #endregion
 
         #region parent
-        public TNegocio parentNegocio { get; set; }
+        public TEmpresa parentEmpresa { get; set; }
         #endregion
 
         #region child

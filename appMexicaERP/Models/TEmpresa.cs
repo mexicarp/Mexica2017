@@ -15,6 +15,8 @@ namespace appMexicaERP.Models
 
         public int idEmpresa { get; set; }
         public int idTipoEmpresa { get; set; }
+        [ForeignKey("parentBanco")]
+        public string idBanco { get; set; }
         public DateTime fechaCreacion { get; set; }
         public string descripcion { get; set; }
         public string domicilio { get; set; }
@@ -27,14 +29,16 @@ namespace appMexicaERP.Models
         public string email { get; set; }
         public string rfc { get; set; }
         public DateTime fechaModificacion { get; set; }
-        public int estatus { get; set; }
+        public int estatus { get; set; } //1 es activo y 0 inactivo
 
         #region Parent
+        public TBanco parentBanco { get; set; }
         #endregion
 
         #region child
         [ForeignKey("idEmpresa")]
         public virtual List<TEmpleado> childcatEmpleado { get; set; }
+        public virtual List<TCuenta> childCuentas { get; set; }
         #endregion
 
     }
