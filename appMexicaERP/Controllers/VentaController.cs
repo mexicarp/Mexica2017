@@ -24,7 +24,7 @@ namespace appMexicaERP.Controllers
 
             //ViewBag.listaTour = DbContext.Tours.OrderBy(x => x.id_tour);
             //ViewBag.listaTour = DbContext.CatalogoTours.OrderBy(x => x.idTour);
-            ViewBag.listaAgencia = DbContext.Agencias.OrderBy(x => x.idAgencia);
+            ViewBag.listaAgencia = DbContext.Agencias.OrderBy(x => x.idAgencia).Where(x => x.estatus==1);
 
             ViewBag.listaFormaPago = DbContext.FormaPagos.OrderBy(x => x.idFormaPago);
             ViewBag.listaPaquete = DbContext.Paquetes.OrderBy(x => x.idPaquete);

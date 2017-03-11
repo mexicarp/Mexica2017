@@ -281,7 +281,7 @@
                                                                 <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.direccion</td>
                                                                 <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">
                                                                     <a class="btn btn-primary btn-icon btn-circle btn-lg" onclick="agenciaEdita('@item.idAgencia', '@item.nombre','@item.direccion', '@item.descripcion');"><i class="fa fa-automobile"></i></a>
-                                                                    <a class="btn btn-danger btn-icon btn-circle btn-lg" onclick="EliminaTour('@item.idAgencia');"><i class="fa fa-times"></i></a>
+                                                                    <a class="btn btn-danger btn-icon btn-circle btn-lg" onclick="EliminaAgencia('@item.idAgencia');"><i class="fa fa-times"></i></a>
                                                                 </td>
                                                             </tr>
                                                         }
@@ -571,7 +571,7 @@
     }
     //--------------------------------------------------------------------------------------------------------------------------------------
     function EliminaPrecio(idPrecio) {
-        var mensaje = confirm("¿Esta Seguro de eliminar el tour...!?");
+        var mensaje = confirm("¿Esta Seguro de eliminar el Precio...!?");
         if (mensaje) {
             window.location.href = '@Url.Action("EliminaPrecio", "VentaCat")' + '/' + idPrecio;
         }
