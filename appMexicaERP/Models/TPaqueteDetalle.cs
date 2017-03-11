@@ -19,10 +19,10 @@ namespace appMexicaERP.Models
         public int estatus { get; set; }
         #endregion
 
-        #region Parent
-        public TPaquete parenPaquete { get; set; }
-        public TTour parenTour { get; set; }
-        #endregion
+        //#region Parent
+        //public TPaquete parenPaquete { get; set; }
+        //public TTour parenTour { get; set; }
+        //#endregion
 
 
 

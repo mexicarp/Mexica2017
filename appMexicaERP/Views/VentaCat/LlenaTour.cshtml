@@ -1,0 +1,11 @@
+﻿
+@{
+    Layout = null;
+}
+<option value="-1" disabled="" selected="" >-Seleccione Tour-</option>
+@foreach (var item in ViewBag.listaTour)
+{
+
+    <option value="@item.idTour" data-precio1="@item.precioALta" data-precio0="@item.precioBaja" >@item.parenTours.tour</option>
+
+}
