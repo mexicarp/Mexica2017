@@ -48,11 +48,11 @@
                             </div>
                             <div class="col-md-2">
                                 <label for="exampleInputEmail1" style="font:bold;">Tipo Empleado</label>
-                                <select class="form-control" id="selectidTipoEmpleado" name="selectidTipoEmpleado">
+                                <select class="form-control" id="selectidPuesto" name="selectidPuesto">
                                     <option value="0">-</option>
-                                    @foreach (var item in ViewBag.listaTipoEmp)
+                                    @foreach (var item in ViewBag.listaPuestos)
                                     {
-                                        <option value="@item.idTipoEmpleado" @Html.Raw(item.idTipoEmpleado == ViewBag.modificarEmpleado.idTipoEmpleado ? "selected" : "")>@item.descripcion</option>
+                                        <option value="@item.idPuesto" @Html.Raw(item.idPuesto == ViewBag.modificarEmpleado.idPuesto ? "selected" : "")>@item.descripcion</option>
                                     }
                                 </select>
                             </div>

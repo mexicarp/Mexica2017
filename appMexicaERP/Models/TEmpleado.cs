@@ -18,7 +18,7 @@ namespace appMexicaERP.Models
 
         [ForeignKey("parentcatEmpresas")]
         public int idEmpresa { get; set; }
-        public int idTipoEmpleado { get; set; }
+        public int idPuesto { get; set; }
         public string nombre { get; set; }
         public string paterno { get; set; }
         public string materno { get; set; }

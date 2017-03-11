@@ -21,7 +21,7 @@ namespace appMexicaERP.DAL
         public DbSet<TMovimiento> Movimientos { get; set; }
         public DbSet<TConcepto> Conceptos { get; set; }
         public DbSet<TVenta> Ventas { get; set; }
-        public DbSet<TTour> Tours { get; set; }
+        //public DbSet<TTour> Tours { get; set; }
         public DbSet<TFormaPago> FormaPagos { get; set; }
         public DbSet<TPaquete> Paquetes { get; set; }
         public DbSet<TPaqueteDetalle> PaqueteDetalles { get; set; }
@@ -35,6 +35,11 @@ namespace appMexicaERP.DAL
         public DbSet<TTipoEmpleado> tiposempleados { get; set; }
         public DbSet<TControlVehicular> ctrolvehiculares { get; set; }
         public DbSet<TCiudad> ciudades { get; set; }
+        //08/03/2017
+        public DbSet<TCategoriaTours> CategoriasTours { get; set; }
+        public DbSet<TTourCat> CatalogoTours { get; set; }
+        public DbSet<TAgencia> Agencias { get; set; }
+        public DbSet<TPrecio> Precios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

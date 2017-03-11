@@ -21,9 +21,9 @@
     <!-- ================== END BASE CSS STYLE ================== -->
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     <!-- ================== ROBERTO INICIO ================== -->
-    <link href="~/Content/template/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/template/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/template/assets/plugins/DataTables/extensions/Buttons/css/buttons.bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/template/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />*@
     <!-- ================== ROBERTO FIN ================== -->
 
     <link href="~/Content/template/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
@@ -497,8 +497,8 @@
                                 Catálogo de Tours
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
-                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                                <li><a href="@Url.Action("CatVentas", "VentaCat")">Registrar</a></li>
+                                @*<li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>*@
                             </ul>
                         </li>
                         <li class="has-sub">
@@ -507,8 +507,8 @@
                                 Catálogos de Paquetes
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
-                                <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>
+                                @*<li><a href="@Url.Action("Registrar", "Movimiento")">Registrar</a></li>
+                                    <li><a href="@Url.Action("Ver", "Movimiento")">ver</a></li>*@
                             </ul>
                         </li>
                         <li class="has-sub">
@@ -904,12 +904,7 @@
                 format: 'YYYY-MM-DD HH:mm'
             });
 
-            $("#idTour").change(function () {
-                var precioax = $(this).find(':selected').data('costoax');
-                var precioag = $(this).find(':selected').data('costoag');
-                document.getElementById("costoVentaax").value = precioax;
-                document.getElementById("costoVentaag").value = precioag;
-            });
+            //----------------------------------------------------------------------------------
             // format: 'YYYY-MM-DD HH:mm'
             $('#FechaVentat').datetimepicker({
                 format: 'DD/MM/YYYY'
@@ -943,32 +938,52 @@
                 return false;
                 return false;
             });
+            //------------CODIGOS ROBERTO INICIO--------------------------------
 
-            sumaFecha = function (d, fecha) {
-                var Fecha = new Date();
-                var sFecha = fecha || (Fecha.getDate() + "/" + (Fecha.getMonth() + 1) + "/" + Fecha.getFullYear());
-                var sep = sFecha.indexOf('/') != -1 ? '/' : '-';
-                var aFecha = sFecha.split(sep);
-                var fecha = aFecha[2] + '/' + aFecha[1] + '/' + aFecha[0];
-                fecha = new Date(fecha);
-                fecha.setDate(fecha.getDate() + parseInt(d));
-                var anno = fecha.getFullYear();
-                var mes = fecha.getMonth() + 1;
-                var dia = fecha.getDate();
-                mes = (mes < 10) ? ("0" + mes) : mes;
-                dia = (dia < 10) ? ("0" + dia) : dia;
-                var fechaFinal = dia + sep + mes + sep + anno;
-                return (fechaFinal);
-            }
+
+            var precioFinal = 0;
+
+
+            $("#idTour").change(function () {
+                var precioAlta = $(this).find(':selected').data('precio1');
+                var precioBaja = $(this).find(':selected').data('precio0');
+                document.getElementById("costoVentaax").value = precioAlta;
+                document.getElementById("costoVentaag").value = precioBaja;
+            });
+            $("#alta").click(function () {
+                if ($("#alta").is(':checked')) {
+                    if (document.getElementById("costoVentaax").value != "") {
+                        precioFinal = document.getElementById("costoVentaax").value;
+                        $("#baja").prop("checked", false);
+                    }
+                } else {
+                    precioFinal = 0;
+                }
+            });
+
+            $("#baja").click(function () {
+                if ($("#baja").is(':checked')) {
+                    if (document.getElementById("costoVentaax").value != "") {
+                        precioFinal = document.getElementById("costoVentaag").value;
+                        $("#alta").prop("checked", false);
+                        status2 = 1;
+                    }
+                } else {
+                    precioFinal = 0;
+                }
+            });
 
             var fx1 = document.getElementById('adultost');
             var fx2 = document.getElementById('ninost');
             var pax = document.getElementById('paxt');
+            var precioTotal = document.getElementById('precioTotal');
+
             fx1.addEventListener('input', function () {
                 var error = true;
                 try {
                     if (fx2.value != null) {
-                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));                       
+                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));
+                        precioTotal.value = (precioFinal * pax.value);
                         error = false;
                     }
                 } catch (err) { }
@@ -980,57 +995,89 @@
                 var error = true;
                 try {
                     if (fx1.value != null) {
-                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));                       
+                        pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));
+                        precioTotal.value = (precioFinal * pax.value);
                         error = false;
                     }
                 } catch (err) { }
                 if (error)
                     pax.value = "Error";
             });
+            //Tbl_Tours.init();
+            //----------------CODIGOS ROBERTO FIN-------------------------------------
+            //sumaFecha = function (d, fecha) {
+            //    var Fecha = new Date();
+            //    var sFecha = fecha || (Fecha.getDate() + "/" + (Fecha.getMonth() + 1) + "/" + Fecha.getFullYear());
+            //    var sep = sFecha.indexOf('/') != -1 ? '/' : '-';
+            //    var aFecha = sFecha.split(sep);
+            //    var fecha = aFecha[2] + '/' + aFecha[1] + '/' + aFecha[0];
+            //    fecha = new Date(fecha);
+            //    fecha.setDate(fecha.getDate() + parseInt(d));
+            //    var anno = fecha.getFullYear();
+            //    var mes = fecha.getMonth() + 1;
+            //    var dia = fecha.getDate();
+            //    mes = (mes < 10) ? ("0" + mes) : mes;
+            //    dia = (dia < 10) ? ("0" + dia) : dia;
+            //    var fechaFinal = dia + sep + mes + sep + anno;
+            //    return (fechaFinal);
+            //}
 
-            var fx3 = document.getElementById('costoAdulto');
-            var fx4 = document.getElementById('costonino');
-            var ttpagar = document.getElementById('ttpagar');
-            var totalt = document.getElementById('totalt');
+            //fx2.addEventListener('input', function () {
+            //    var error = true;
+            //    try {
+            //        if (fx1.value != null) {
+            //            pax.value = eval(parseInt(fx2.value) + parseInt(fx1.value));
+            //            error = false;
+            //        }
+            //    } catch (err) { }
+            //    if (error)
+            //        pax.value = "Error";
+            //});
 
-            var tt1=0;
-            var tt2=0;
+            //var fx3 = document.getElementById('costoAdulto');
+            //var fx4 = document.getElementById('costonino');
+            //var ttpagar = document.getElementById('ttpagar');
+            //var totalt = document.getElementById('totalt');
 
-            fx3.addEventListener('input', function () {
-                var error = true;
-                try {
-                    if (fx1.value != null) {
-                        tt1 = eval(parseInt(fx1.value) * parseInt(fx3.value));
-                        ttpagar.value = tt1 + tt2;
-                        totalt.value = ttpagar.value;
-                        error = false;
-                    }
-                } catch (err) { }
-                if (error)
-                    ttpagar.value = "Error";
-            });
+            //var tt1=0;
+            //var tt2=0;
 
-            fx4.addEventListener('input', function () {
-                var error = true;
-                try {
-                    if (fx2.value != null) {
-                        tt2 = eval(parseInt(fx2.value) * parseInt(fx4.value));
-                        ttpagar.value = tt1 + tt2;
-                        totalt.value = ttpagar.value;
-                        error = false;
-                    }
-                } catch (err) { }
-                if (error)
-                    ttpagar.value = "Error";
-            });
+            //fx3.addEventListener('input', function () {
+            //    var error = true;
+            //    try {
+            //        if (fx1.value != null) {
+            //            tt1 = eval(parseInt(fx1.value) * parseInt(fx3.value));
+            //            ttpagar.value = tt1 + tt2;
+            //            totalt.value = ttpagar.value;
+            //            error = false;
+            //        }
+            //    } catch (err) { }
+            //    if (error)
+            //        ttpagar.value = "Error";
+            //});
+
+            //fx4.addEventListener('input', function () {
+            //    var error = true;
+            //    try {
+            //        if (fx2.value != null) {
+            //            tt2 = eval(parseInt(fx2.value) * parseInt(fx4.value));
+            //            ttpagar.value = tt1 + tt2;
+            //            totalt.value = ttpagar.value;
+            //            error = false;
+            //        }
+            //    } catch (err) { }
+            //    if (error)
+            //        ttpagar.value = "Error";
+            //});
 
             //costoVendido = document.getElementById('costoVendidot');
-            total = document.getElementById('totalt');
-            anticipo = document.getElementById('anticipot');
-            saldo = document.getElementById('saldot');
+
+            //total = document.getElementById('totalt');
+            //anticipo = document.getElementById('anticipot');
+            //saldo = document.getElementById('saldot');
 
 
-            
+
 
             //costoVendido.addEventListener('input', function () {
             //    var error = true;
@@ -1045,81 +1092,81 @@
             //        pax.value = "Error";
             //});
 
-            anticipo.addEventListener('input', function () {
-                var error = true;
-                try {
-                    if (total.value != null) {
-                        saldo.value = eval(parseInt(total.value) - parseInt(anticipo.value));
-                        error = false;
-                    }
-                } catch (err) { }
-                if (error)
-                    pax.value = "Error";
-            });
+            //anticipo.addEventListener('input', function () {
+            //    var error = true;
+            //    try {
+            //        if (total.value != null) {
+            //            saldo.value = eval(parseInt(total.value) - parseInt(anticipo.value));
+            //            error = false;
+            //        }
+            //    } catch (err) { }
+            //    if (error)
+            //        pax.value = "Error";
+            //});
             //----------------------------------------------------------------------------------------------------------------
-            var paxe = 0;
-            var precio = 0;
-            var extra = 0;
-            $("#idPaquete").change(function () {
-                precio = $(this).find(':selected').data('costo');
-                document.getElementById("costoVentap").value = precio;
-                paxe = $(this).find(':selected').data('npax');
-                document.getElementById("nPaxp").value = paxe;
-                extra = $(this).find(':selected').data('extra');
-                document.getElementById("gastoExtrap").value = extra;
+            //    var paxe = 0;
+            //    var precio = 0;
+            //    var extra = 0;
+            //    $("#idPaquete").change(function () {
+            //        precio = $(this).find(':selected').data('costo');
+            //        document.getElementById("costoVentap").value = precio;
+            //        paxe = $(this).find(':selected').data('npax');
+            //        document.getElementById("nPaxp").value = paxe;
+            //        extra = $(this).find(':selected').data('extra');
+            //        document.getElementById("gastoExtrap").value = extra;
 
-                document.getElementById('adultosp').value = "";
-                document.getElementById('ninosp').value = "";
-                document.getElementById('totalExtrap').value = "";
-                document.getElementById('paxp').value = "";
-                document.getElementById('totalp').value = "";
-            });
+            //        document.getElementById('adultosp').value = "";
+            //        document.getElementById('ninosp').value = "";
+            //        document.getElementById('totalExtrap').value = "";
+            //        document.getElementById('paxp').value = "";
+            //        document.getElementById('totalp').value = "";
+            //    });
 
-            var fx11 = document.getElementById('adultosp');
-            var fx22 = document.getElementById('ninosp');
-            paxp = document.getElementById('paxp');
-            costoVendidop = document.getElementById('costoVendidop');
-            totalp = document.getElementById('totalp');
-            anticipop = document.getElementById('anticipop');
-            saldop = document.getElementById('saldop');
-            totalExtrap = document.getElementById('totalExtrap');
-            fx22.addEventListener('input', function () {
-                var error = true;
-                try {
-                    if (fx11.value != null) {
-                        paxp.value = eval(parseInt(fx22.value) + parseInt(fx11.value) + parseInt(document.getElementById("nPaxp").value));
-                        totalExtrap.value = eval((parseInt(fx22.value) + parseInt(fx11.value)) * document.getElementById("gastoExtrap").value);
-                        totalp.value = eval(parseInt(totalExtrap.value) + parseInt(document.getElementById("costoVentap").value));
-                        error = false;
-                    }
-                } catch (err) { }
-                if (error)
-                    pax.value = "Error";
-            });
+            //    var fx11 = document.getElementById('adultosp');
+            //    var fx22 = document.getElementById('ninosp');
+            //    paxp = document.getElementById('paxp');
+            //    costoVendidop = document.getElementById('costoVendidop');
+            //    totalp = document.getElementById('totalp');
+            //    anticipop = document.getElementById('anticipop');
+            //    saldop = document.getElementById('saldop');
+            //    totalExtrap = document.getElementById('totalExtrap');
+            //    fx22.addEventListener('input', function () {
+            //        var error = true;
+            //        try {
+            //            if (fx11.value != null) {
+            //                paxp.value = eval(parseInt(fx22.value) + parseInt(fx11.value) + parseInt(document.getElementById("nPaxp").value));
+            //                totalExtrap.value = eval((parseInt(fx22.value) + parseInt(fx11.value)) * document.getElementById("gastoExtrap").value);
+            //                totalp.value = eval(parseInt(totalExtrap.value) + parseInt(document.getElementById("costoVentap").value));
+            //                error = false;
+            //            }
+            //        } catch (err) { }
+            //        if (error)
+            //            pax.value = "Error";
+            //    });
 
-            costoVendidop.addEventListener('input', function () {
-                var error = true;
-                try {
-                    document.getElementById("totalpF").value = document.getElementById('costoVendidop').value;
-                    error = false;
-                } catch (err) { }
-                if (error)
-                    document.getElementById("totalpF").value = "Error";
-            });
+            //    costoVendidop.addEventListener('input', function () {
+            //        var error = true;
+            //        try {
+            //            document.getElementById("totalpF").value = document.getElementById('costoVendidop').value;
+            //            error = false;
+            //        } catch (err) { }
+            //        if (error)
+            //            document.getElementById("totalpF").value = "Error";
+            //    });
 
-            anticipop.addEventListener('input', function () {
-                var error = true;
-                try {
-                    if (totalp.value != null) {
-                        saldop.value = eval(parseInt(totalpF.value) - parseInt(anticipop.value));
-                        error = false;
-                    }
-                } catch (err) { }
-                if (error)
-                    anticipop.value = "Error";
-            });
+            //    anticipop.addEventListener('input', function () {
+            //        var error = true;
+            //        try {
+            //            if (totalp.value != null) {
+            //                saldop.value = eval(parseInt(totalpF.value) - parseInt(anticipop.value));
+            //                error = false;
+            //            }
+            //        } catch (err) { }
+            //        if (error)
+            //            anticipop.value = "Error";
+            //    });
 
-            Tbl_1.init();
+            //    Tbl_1.init();
         });
 
 

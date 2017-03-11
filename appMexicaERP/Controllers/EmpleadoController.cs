@@ -50,7 +50,7 @@ namespace appMexicaERP.Controllers
                 Empleados.fechaRegistro = DateTime.Now;
                 Empleados.fechaIngreso = DateTime.Parse(formCollection["datefechaIngreso"]);
                 Empleados.idEmpresa = int.Parse(formCollection["selectidEmpresa"]);
-                Empleados.idTipoEmpleado = int.Parse(formCollection["selectidTipoEmpleado"]);
+                Empleados.idPuesto = int.Parse(formCollection["selectidPuesto"]);
                 Empleados.nombre = formCollection["txtnombre"];
                 Empleados.paterno = formCollection["txtpaterno"];
                 Empleados.materno = formCollection["txtmaterno"];
@@ -136,7 +136,7 @@ namespace appMexicaERP.Controllers
             Empleados.fechaRegistro = DateTime.Now;
             Empleados.fechaIngreso = DateTime.Parse(formCollection["datefechaIngreso"]);
             Empleados.idEmpresa = int.Parse(formCollection["selectidEmpresa"]);
-            Empleados.idTipoEmpleado = int.Parse(formCollection["selectidTipoEmpleado"]);
+            Empleados.idPuesto = int.Parse(formCollection["selectidPuesto"]);
             Empleados.nombre = formCollection["txtnombre"];
             Empleados.paterno = formCollection["txtpaterno"];
             Empleados.materno = formCollection["txtmaterno"];

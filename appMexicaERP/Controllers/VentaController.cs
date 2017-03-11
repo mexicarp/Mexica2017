@@ -22,10 +22,13 @@ namespace appMexicaERP.Controllers
 
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
 
-            ViewBag.listaTour = DbContext.Tours.OrderBy(x => x.id_tour);
+            //ViewBag.listaTour = DbContext.Tours.OrderBy(x => x.id_tour);
+            //ViewBag.listaTour = DbContext.CatalogoTours.OrderBy(x => x.idTour);
+            ViewBag.listaAgencia = DbContext.Agencias.OrderBy(x => x.idAgencia).Where(x => x.estatus==1);
+
             ViewBag.listaFormaPago = DbContext.FormaPagos.OrderBy(x => x.idFormaPago);
             ViewBag.listaPaquete = DbContext.Paquetes.OrderBy(x => x.idPaquete);
-            ViewBag.listaPaqueteTour = DbContext.PaqueteDetalles.Include(i1 => i1.parenTour).Where(w1 => w1.idPaquete == 0).ToList();
+            //ViewBag.listaPaqueteTour = DbContext.PaqueteDetalles.Include(i1 => i1.parenTour).Where(w1 => w1.idPaquete == 0).ToList();
 
             return View();
         }
@@ -45,9 +48,11 @@ namespace appMexicaERP.Controllers
         public ActionResult TblPaquete(int id)
         {
             DBappWebMexicaERPcontext DbContext = new DBappWebMexicaERPcontext();
-            ViewBag.listaPaqueteTour = DbContext.PaqueteDetalles.Include(i1 => i1.parenTour).Where(w1 => w1.idPaquete == id).ToList();
+            //ViewBag.listaPaqueteTour = DbContext.PaqueteDetalles.Include(i1 => i1.parenTour).Where(w1 => w1.idPaquete == id).ToList();
             return View();
         }
+
+        //---------------------------------------------------------------------------------
 
         [HttpPost]
         public ActionResult InsertarTour(FormCollection formCollection)//recolectar toda la informacion que hay dentro del formulario
