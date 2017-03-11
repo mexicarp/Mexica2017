@@ -5270,7 +5270,6 @@
     <Content Include="Views\Concepto\Ver.cshtml" />
     <Content Include="Views\Flotilla\Modificar.cshtml" />
     <Content Include="Views\Venta\Registro.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Concepto\VerDetalles.cshtml" />
     <Content Include="Views\Concepto\Modificar.cshtml" />
     <Content Include="Views\Empresa\RelacionarConBanco.cshtml" />
@@ -5280,10 +5279,8 @@
     <Content Include="Views\Empresa\VerPorIdBancoConAjaxParaCuenta.cshtml" />
     <Content Include="Views\Empresa\VerPorIdBancoConAjaxParaMovimiento.cshtml" />
     <Content Include="Views\Movimiento\ListarPorMovimientosPorCuentaConAjax.cshtml" />
-=======
     <Content Include="Views\VentaCat\CatVentas.cshtml" />
     <Content Include="Views\VentaCat\LlenaTour.cshtml" />
->>>>>>> origin/master
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
