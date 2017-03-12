@@ -248,8 +248,27 @@
                                                 <label>Descripcion Agencia</label>
                                                 <input type="text" class="form-control input-sm" id="descripcion" name="descripcion" />
                                             </div>
+                                            <div class="col-md-4">
+                                                <label>Nombre Encargado</label>
+                                                <input type="text" class="form-control input-sm" id="nombreE" name="nombreE" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Correo Electronico</label>
+                                                <input type="text" class="form-control input-sm" id="correoE" name="correoE" />
+                                            </div>
                                         </div>
                                     </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <label>Telefono </label>
+                                                <input type="text" class="form-control input-sm" id="telefonoE" name="telefonoE" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <!-- end row -->
                                     <br />
                                     <div class="row">
@@ -280,7 +299,7 @@
                                                                 <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.nombre</td>
                                                                 <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">@item.direccion</td>
                                                                 <td style="text-align:center !important; font-family:'Times New Roman', Times, serif; font-size:10pt;">
-                                                                    <a class="btn btn-primary btn-icon btn-circle btn-lg" onclick="agenciaEdita('@item.idAgencia', '@item.nombre','@item.direccion', '@item.descripcion');"><i class="fa fa-automobile"></i></a>
+                                                                    <a class="btn btn-primary btn-icon btn-circle btn-lg" onclick="agenciaEdita('@item.idAgencia', '@item.nombre','@item.direccion', '@item.descripcion', '@item.nombreEncargado', '@item.correo', '@item.telefono');"><i class="fa fa-automobile"></i></a>
                                                                     <a class="btn btn-danger btn-icon btn-circle btn-lg" onclick="EliminaAgencia('@item.idAgencia');"><i class="fa fa-times"></i></a>
                                                                 </td>
                                                             </tr>
@@ -317,6 +336,24 @@
                                                         <div class="col-md-12">
                                                             <label>Descripción</label>
                                                             <input type="text" class="form-control input-sm" id="descripcionEditA" name="descripcionEditA" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Nombre Encargado</label>
+                                                            <input type="text" class="form-control input-sm" id="nombreEditA" name="nombreEditA" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Correo</label>
+                                                            <input type="text" class="form-control input-sm" id="correoEditA" name="correoEditA" />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <div class="col-md-12">
+                                                            <label>Telefono</label>
+                                                            <input type="text" class="form-control input-sm" id="telefonoEditA" name="telefonoEditA" />
                                                         </div>
                                                         <br />
                                                     </div>
@@ -525,12 +562,15 @@
         $("#frmEditarTour").submit();
     }
     //------------------------------------------------------------------------------------------------------------------------------------
-    function agenciaEdita(idAgencia, nombre, direccion, descripcion) {
+    function agenciaEdita(idAgencia, nombre, direccion, descripcion, nombreE, correo, telefono) {
         idTourEdit = idTour;
         document.getElementById("idAgenciaEdit").value = idAgencia;
         document.getElementById("nombreEdit").value = nombre;
         document.getElementById("direccionEdit").value = direccion;
         document.getElementById("descripcionEditA").value = descripcion;
+        document.getElementById("nombreEditA").value = nombreE;
+        document.getElementById("correoEditA").value = correo;
+        document.getElementById("telefonoEditA").value = telefono;
         $('#modal-agencia').modal('show');
     }
     function EditaAgencias() {

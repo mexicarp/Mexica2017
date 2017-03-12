@@ -108,9 +108,9 @@ namespace appMexicaERP.Controllers
         public ActionResult Consulta()
         {
             DBappWebMexicaERPcontext dbCtx = new DBappWebMexicaERPcontext();
-
+          
             ViewBag.listaEmpleados = dbCtx.empleados.Include(x1 => x1.parentcatEmpresas).OrderBy(x => x.idEmpleado).ToList();
-
+            ViewBag.listaPuestos = dbCtx.puestos.OrderByDescending(x => x.idPuesto).ToList();
             return View();
         }
         [HttpGet]

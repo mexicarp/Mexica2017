@@ -123,6 +123,9 @@ namespace appMexicaERP.Controllers
             InsertCatAgencia.fechaRegistro = DateTime.Now;
             InsertCatAgencia.fechaModificacion = DateTime.Now;
             InsertCatAgencia.estatus = 1;
+            InsertCatAgencia.nombreEncargado = formCollection["nombreE"];
+            InsertCatAgencia.correo = formCollection["correoE"];
+            InsertCatAgencia.telefono = formCollection["telefonoE"];
             DbContext.Agencias.Add(InsertCatAgencia);
             DbContext.SaveChanges();
             return RedirectToAction("CatVentas", "VentaCat");
